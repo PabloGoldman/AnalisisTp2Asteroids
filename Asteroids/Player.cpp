@@ -69,8 +69,3 @@ void Player::AddPoints(int _points)
 {
 	points += _points;
 }
-
-void Player::MovePlayer(int speed)
-{
-	rectangle.y += speed * GetFrameTime();
-}

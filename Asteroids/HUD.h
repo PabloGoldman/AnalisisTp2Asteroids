@@ -12,4 +12,3 @@ public:
 
 };
 
-#pragma once

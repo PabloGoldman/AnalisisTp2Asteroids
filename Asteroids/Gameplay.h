@@ -1,38 +1,46 @@
 #pragma once
-#include "SceneManager.h"
+#include "Player.h"
 #include "HUD.h"
+#include "InGamePause.h"
 #include "AudioManager.h"
 #include "EndGameScreen.h"
-#include "InGamePause.h"
 
 class Gameplay
 {
-	private:
-		SceneManager* scene;
-		EndGameScreen* endGameScreen;
-		AudioManager* audioManager;
-		InGamePause* pause;
-		HUD* hud;
+private:
 
-		bool inPause;
+	EndGameScreen* endGameScreen;
+	AudioManager* audioManager;
+	SceneManager* scene;
+	InGamePause* pause;
+	HUD* hud;
+	Player* player;
 
-		void Input();
-		void Update();
-		void Draw();
+	bool inPause;
 
-	public:
-		Gameplay();
-		~Gameplay();
+	void Input();
+	void Update();
+	void Draw();
+	void SetPlayerData(Player* player, int posX, int posY);
+	void SetPlayerPosition(Player* player, int posX, int posY);
+	void DrawPlayer(Player* player);
+	void DrawPlayerPoints(Player* player, int x, int y);
+	void ResetPlayerData(Player* player);
+	void ResetData(Player* player);
 
-		bool GetInPause();
+public:
+	Gameplay();
+	~Gameplay();
 
-		void SetInPause(bool pause);
+	bool GetInPause();
 
-		void SetSceneManager(SceneManager* sc);
-		void SetEndGameScreen(EndGameScreen* eg);
-		void SetInGamePauseData();
-		void SetAudioManager(AudioManager* am);
+	void SetInPause(bool pause);
 
-		void InGame();
-		void InitGameplay();
+	void SetEndGameScreen(EndGameScreen* eg);
+	void SetInGamePauseData();
+	void SetAudioManager(AudioManager* am);
+	void SetSceneManager(SceneManager* sc);
+	void InGame();
+	void InitGameplay();
 };
+

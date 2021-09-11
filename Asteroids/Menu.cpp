@@ -163,7 +163,7 @@ void Menu::CheckInput()
 		switch (menuScene)
 		{
 		case MenuScene::PLAY:
-			sceneManager->SetSceneManager(Scene::CHOOSEMODE);
+			sceneManager->SetSceneManager(Scene::GAME);
 			break;
 		case MenuScene::OPTIONS:
 			sceneManager->SetSceneManager(Scene::RULES);

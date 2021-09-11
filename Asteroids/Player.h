@@ -26,7 +26,6 @@ public:
 	void SetPoints(int _points);
 	void SetRectanglePos(int posX, int posY);
 	void AddPoints(int _points);
-	void MovePlayer(int speed);
 };
 
 
