@@ -13,10 +13,138 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{7ed1b932-652d-4b33-8eb0-20793228999b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\GameManager">
+      <UniqueIdentifier>{d4027517-f161-4259-af19-1a431c31a612}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\SceneManager">
+      <UniqueIdentifier>{cb301d36-e071-42d3-ba29-90157d4b3175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\AudioManager">
+      <UniqueIdentifier>{6afa08cb-4ec3-4bd6-a8a9-b3eced8f350d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens">
+      <UniqueIdentifier>{04200239-23ea-4c7e-bd1c-bce9e06b498c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Credits">
+      <UniqueIdentifier>{129e00cb-d376-4c3f-bf3d-6c578f3580f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\EndGameScreen">
+      <UniqueIdentifier>{a4b0df9d-21ef-498b-a32e-fccbe97314e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Gameplay">
+      <UniqueIdentifier>{f8613444-a176-4309-90ec-744426535ebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{198d7887-05b5-47ea-a29d-a6f3b9fe2036}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Buttons">
+      <UniqueIdentifier>{7b67076e-a131-4d9b-860e-e718d67c0fbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Text">
+      <UniqueIdentifier>{e6a9ea16-be19-4a90-8d49-7ab2a37efdbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\MainMenu">
+      <UniqueIdentifier>{81c5ab25-2d9c-428c-a4de-349965a3ad01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Rules">
+      <UniqueIdentifier>{36e8bf0c-5c4a-4696-8431-97926ef78d06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Gameplay\HUD">
+      <UniqueIdentifier>{810dc843-81b7-472e-83e5-c6c1acf319af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Gameplay\InGamePause">
+      <UniqueIdentifier>{4e8c599e-fbaf-4154-8867-6ef13b818282}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Gameplay\Player">
+      <UniqueIdentifier>{6761a71e-d510-4ec5-acd7-5a55e0b5a1f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Managers\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioManager.cpp">
+      <Filter>Managers\AudioManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Managers\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Screens\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>UI\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="Credits.cpp">
+      <Filter>Screens\Credits</Filter>
+    </ClCompile>
+    <ClCompile Include="EndGameScreen.cpp">
+      <Filter>Screens\EndGameScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay.cpp">
+      <Filter>Screens\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Rules.cpp">
+      <Filter>Screens\Rules</Filter>
+    </ClCompile>
+    <ClCompile Include="inGamePause.cpp">
+      <Filter>Screens\Gameplay\InGamePause</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Screens\Gameplay\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Screens\Gameplay\Player</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameManager.h">
+      <Filter>Managers\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioManager.h">
+      <Filter>Managers\AudioManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Managers\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Screens\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>UI\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="Credits.h">
+      <Filter>Screens\Credits</Filter>
+    </ClInclude>
+    <ClInclude Include="EndGameScreen.h">
+      <Filter>Screens\EndGameScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay.h">
+      <Filter>Screens\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Rules.h">
+      <Filter>Screens\Rules</Filter>
+    </ClInclude>
+    <ClInclude Include="inGamePause.h">
+      <Filter>Screens\Gameplay\InGamePause</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Screens\Gameplay\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Screens\Gameplay\Player</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
