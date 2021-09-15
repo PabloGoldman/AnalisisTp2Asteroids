@@ -88,39 +88,45 @@ void Gameplay::MovePlayer()
 
 void Gameplay::RotatePlayer()
 {
-	if (IsKeyDown(KEY_LEFT))
-		player->AddRotation(-200 * GetFrameTime());
-	if (IsKeyDown(KEY_RIGHT)) 
-		player->AddRotation(200 * GetFrameTime());
+	player->SetRotation(Vector2Angle(player->GetPos(), GetMousePosition()) + 90);
 }
 
 void Gameplay::Move()
 {
 	player->AddPosition({ player->GetSpeed().x * player->GetAcceleration() * GetFrameTime(),
-		player->GetSpeed().y * -player->GetAcceleration()* GetFrameTime() });
+		player->GetSpeed().y * -player->GetAcceleration() * GetFrameTime() });
+}
+
+float Gameplay::Vector2Angle(Vector2 v1, Vector2 v2)
+{
+	float result = atan2f(v2.y - v1.y, v2.x - v1.x) * RAD2DEG;
+	if (result < 0)
+		result += 360;
+
+	return result;
 }
 
 void Gameplay::SetMovSpeed()
 {
 	player->SetSpeed({ {sin(player->GetRotation() * DEG2RAD) * 100.0f},
 		{cos(player->GetRotation() * DEG2RAD) * 100.0f} });
-} 
+}
 
 void Gameplay::Accelerate()
 {
-	if (IsMouseButtonDown(1)) 
+	if (IsMouseButtonDown(1))
 	{
 		if (player->GetAcceleration() < 1)
 			player->AddAcceleration(0.04f);
 	}
-	else 
+	else
 	{
 		if (player->GetAcceleration() > 0)
 			player->AddAcceleration(-0.02f);
 		else if (player->GetAcceleration() < 0)
 			player->SetAcceleration(0);
 	}
-	
+
 }
 
 void Gameplay::DrawPlayerPoints(Player* player, int x, int y)

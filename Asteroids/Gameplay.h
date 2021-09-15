@@ -32,6 +32,8 @@ private:
 	void Accelerate();
 	void Move();
 
+	float Vector2Angle(Vector2 v1, Vector2 v2);
+
 public:
 	Gameplay();
 	~Gameplay();
