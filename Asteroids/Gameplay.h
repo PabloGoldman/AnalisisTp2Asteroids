@@ -28,7 +28,7 @@ private:
 	void ResetData(Player* player);
 	void MovePlayer();
 	void RotatePlayer();
-	void MoveBySpeed();
+	void SetMovSpeed();
 	void Accelerate();
 	void Move();
 
