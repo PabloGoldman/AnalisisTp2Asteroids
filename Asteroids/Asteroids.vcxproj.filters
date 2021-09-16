@@ -61,6 +61,21 @@
     <Filter Include="Screens\Gameplay\Player">
       <UniqueIdentifier>{6761a71e-d510-4ec5-acd7-5a55e0b5a1f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Screens\Gameplay\Meteors">
+      <UniqueIdentifier>{63fbafaf-d389-46fc-a9ac-9d4e266980ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Gameplay\Meteors\BigMeteor">
+      <UniqueIdentifier>{77446ef0-6feb-4781-a362-b204df4def8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Gameplay\Meteors\MediumMeteor">
+      <UniqueIdentifier>{4dfd42ab-db26-4923-861a-87afadbe1d44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Gameplay\Meteors\SmallMeteor">
+      <UniqueIdentifier>{f087f010-2e65-48b2-a7a5-d7af22157ed6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Gameplay\Bullet">
+      <UniqueIdentifier>{95492a78-e20c-4200-98de-6ebbd5cf2bc6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -105,6 +120,18 @@
     <ClCompile Include="Player.cpp">
       <Filter>Screens\Gameplay\Player</Filter>
     </ClCompile>
+    <ClCompile Include="BigMeteor.cpp">
+      <Filter>Screens\Gameplay\Meteors\BigMeteor</Filter>
+    </ClCompile>
+    <ClCompile Include="MediumMeteor.cpp">
+      <Filter>Screens\Gameplay\Meteors\MediumMeteor</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Screens\Gameplay\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallMeteor.cpp">
+      <Filter>Screens\Gameplay\Meteors\SmallMeteor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -145,6 +172,18 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Screens\Gameplay\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="BigMeteor.h">
+      <Filter>Screens\Gameplay\Meteors\BigMeteor</Filter>
+    </ClInclude>
+    <ClInclude Include="MediumMeteor.h">
+      <Filter>Screens\Gameplay\Meteors\MediumMeteor</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Screens\Gameplay\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallMeteor.h">
+      <Filter>Screens\Gameplay\Meteors\SmallMeteor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

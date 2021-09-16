@@ -12,8 +12,8 @@ Gameplay::Gameplay()
 	player = new Player();
 	hud = new HUD();
 	pause = new InGamePause();
-
 	inPause = false;
+	
 }
 
 Gameplay::~Gameplay()

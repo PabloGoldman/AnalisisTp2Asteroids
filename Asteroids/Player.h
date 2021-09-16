@@ -1,10 +1,12 @@
 #pragma once
 #include "raylib.h"
+#include "Bullet.h"
 
 class Player
 {
 private:
 
+	Bullet* bullet[10];
 	Vector2 position;
 	Vector2 speed;
 	float acceleration;
@@ -29,7 +31,6 @@ public:
 	float GetRotation();
 	float GetHeight();
 
-	//void SetWidth(int _width);
 	void AddPosition(Vector2 _pos);
 	void AddRotation(float _rotation);
 	void AddAcceleration(float _acceleration);
@@ -43,6 +44,7 @@ public:
 	void AddPoints(int _points);
 	void DrawPlayer();
 	void WallCollision();
+	void Shoot();
 };
 
 

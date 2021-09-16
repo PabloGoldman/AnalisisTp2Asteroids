@@ -150,6 +150,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BigMeteor.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Credits.cpp" />
     <ClCompile Include="EndGameScreen.cpp" />
@@ -158,14 +160,18 @@
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="inGamePause.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MediumMeteor.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rules.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SmallMeteor.cpp" />
     <ClCompile Include="Text.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BigMeteor.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Credits.h" />
     <ClInclude Include="EndGameScreen.h" />
@@ -173,10 +179,12 @@
     <ClInclude Include="Gameplay.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="inGamePause.h" />
+    <ClInclude Include="MediumMeteor.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rules.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SmallMeteor.h" />
     <ClInclude Include="Text.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

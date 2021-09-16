@@ -3,17 +3,23 @@
 
 const int screenWidth = 800;
 const int screenHeight = 450;
+const int totalBullets = 10;
 
 Player::Player()
 {
 	color = MAROON;
 	speed = {0,0};
 	points = 0;
+
+	for (int i = 0; i < totalBullets; i++)
+	{
+		bullet[i] = new Bullet();
+	}
 }
 
 Player::~Player()
 {
-
+	delete[] bullet;
 }
 
 Color Player::GetColor()
@@ -132,4 +138,21 @@ void Player::WallCollision()
 		position.y = -(height);
 	else if (position.y < -(height))
 		position.y = screenHeight + height;
+}
+
+void Player::Shoot()
+{
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+	{
+		for (int i = 0; i < totalBullets; i++)
+		{
+			if (!bullet[i]->GetIsActive()) {
+				bullet[i]->SetPosition({ position.x + (float)sin(rotation * DEG2RAD) * (height), position.y - (float)cos(rotation * DEG2RAD) * (height) });
+				bullet[i]->SetIsActive(true);
+				bullet[i]->SetSpeed({ (float)(1.5 * sin(rotation * DEG2RAD) * 6.0f), (float)(1.5 * cos(rotation * DEG2RAD) * 6.0f) });
+				bullet[i]->SetRotation(rotation);
+				break;
+			}
+		}
+	}
 }
