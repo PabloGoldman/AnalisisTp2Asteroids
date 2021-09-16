@@ -95,6 +95,7 @@ void Gameplay::Move()
 {
 	player->AddPosition({ player->GetSpeed().x * player->GetAcceleration() * GetFrameTime(),
 		player->GetSpeed().y * -player->GetAcceleration() * GetFrameTime() });
+	player->WallCollision();
 }
 
 float Gameplay::Vector2Angle(Vector2 v1, Vector2 v2)

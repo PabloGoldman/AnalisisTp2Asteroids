@@ -1,6 +1,9 @@
 #include "Player.h"
 #include <math.h>
 
+const int screenWidth = 800;
+const int screenHeight = 450;
+
 Player::Player()
 {
 	color = MAROON;
@@ -117,4 +120,16 @@ void Player::DrawPlayer()
 	Vector2 v2 = { position.x - cosf(rotation * DEG2RAD) * (20.0f / 2),position.y - sinf(rotation * DEG2RAD) * (20.0f / 2) };
 	Vector2 v3 = { position.x + cosf(rotation * DEG2RAD) * (20.0f / 2),position.y + sinf(rotation * DEG2RAD) * (20.0f / 2) };
 	DrawTriangle(v1, v2, v3, color);
+}
+
+void Player::WallCollision()
+{
+	if (position.x > screenWidth + height)
+		position.x = -(height);
+	else if (position.x < -(height))
+		position.x = screenWidth + height;
+	if (position.y > (screenHeight + height))
+		position.y = -(height);
+	else if (position.y < -(height))
+		position.y = screenHeight + height;
 }

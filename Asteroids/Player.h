@@ -42,6 +42,7 @@ public:
 	void SetPlayerPos(Vector2 _position);
 	void AddPoints(int _points);
 	void DrawPlayer();
+	void WallCollision();
 };
 
 
