@@ -67,11 +67,10 @@ void Gameplay::Update()
 
 void Gameplay::Draw()
 {
-	player->DrawPlayer();
+	player->Draw();
 
 	DrawPlayerPoints(player, 300, 50);
 }
-
 
 void Gameplay::SetSceneManager(SceneManager* sc)
 {
@@ -80,6 +79,7 @@ void Gameplay::SetSceneManager(SceneManager* sc)
 
 void Gameplay::MovePlayer()
 {
+	player->Update();
 	RotatePlayer();
 	SetMovSpeed();
 	Accelerate();

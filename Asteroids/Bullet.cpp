@@ -3,6 +3,22 @@
 const int screenWidth = 800;
 const int screenHeight = 450;
 
+Bullet::Bullet()
+{
+	active = false;
+	color = BLACK;
+	lifeSpawn = 0;
+	position = { 0,0 };
+	radius = 2;
+	rotation = 0;
+	speed = { 0,0 };
+}
+
+Bullet::~Bullet()
+{
+
+}
+
 Vector2 Bullet::GetPosition()
 {
 	return position;
@@ -23,14 +39,14 @@ float Bullet::GetRotation()
 	return rotation;
 }
 
-int Bullet::GetLifeSpawn()
+float Bullet::GetLifeSpawn()
 {
 	return lifeSpawn;
 }
 
 bool Bullet::GetIsActive()
 {
-	return false;
+	return active;
 }
 
 Color Bullet::GetColor()
@@ -45,6 +61,8 @@ void Bullet::SetPosition(Vector2 _pos)
 
 void Bullet::SetSpeed(Vector2 _speed)
 {
+	_speed.x *= 50;
+	_speed.y *= 50;
 	speed = _speed;
 }
 
@@ -53,7 +71,7 @@ void Bullet::SetRadius(float _radius)
 	radius = _radius;
 }
 
-void Bullet::SetLifeSpawn(int _lifeSpawn)
+void Bullet::SetLifeSpawn(float _lifeSpawn)
 {
 	lifeSpawn = _lifeSpawn;
 }
@@ -75,42 +93,41 @@ void Bullet::SetRotation(float _rotation)
 
 void Bullet::Update()
 {
-	Movement();
-	LifeTime();
 	WallCollision();
-	ResetData();
 }
 
-void Bullet::Movement()
-{
-	position.x += speed.x;
-	position.y += speed.y;
-}
-
-void Bullet::LifeTime()
+void Bullet::Draw()
 {
 	if (active)
-		lifeSpawn++;
+	{
+		DrawCircleV(position, radius, BLACK);
+	}
+}
+
+void Bullet::AddPosition(Vector2 pos)
+{
+	position.x += pos.x * GetFrameTime();
+	position.y -= pos.y * GetFrameTime();
 }
 
 void Bullet::WallCollision()
 {
-	if (position.x > screenWidth + radius) 
+	if (position.x > screenWidth + radius)
 	{
 		active = false;
 		lifeSpawn = 0;
 	}
-	else if (position.x < 0 - radius) 
+	else if (position.x < 0 - radius)
 	{
 		active = false;
 		lifeSpawn = 0;
 	}
-	if (position.y > screenHeight + radius) 
+	if (position.y > screenHeight + radius)
 	{
 		active = false;
 		lifeSpawn = 0;
 	}
-	else if (position.y < 0 - radius) 
+	else if (position.y < 0 - radius)
 	{
 		active = false;
 		lifeSpawn = 0;
@@ -119,17 +136,9 @@ void Bullet::WallCollision()
 
 void Bullet::ResetData()
 {
-	if (lifeSpawn >= 60)
-	{
-		position = { 0, 0 };
-		speed = { 0, 0 };
-		lifeSpawn = 0;
-		active = false;
-	}
+	position = { 0, 0 };
+	speed = { 0, 0 };
+	lifeSpawn = 0;
+	active = false;
 }
 
-void Bullet::Draw()
-{
-	if (active) 
-		DrawCircleV(position, radius, BLACK);
-}
