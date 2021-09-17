@@ -32,8 +32,8 @@ class Bullet
         void SetRotation(float _rotation);
         
         void Update();
-        /*void Movement();
-        void LifeTime();*/
+        //void Movement();
+        void LifeTime();
         void WallCollision();
         void ResetData();
         void Draw();

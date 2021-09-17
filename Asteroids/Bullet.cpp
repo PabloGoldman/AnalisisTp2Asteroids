@@ -93,6 +93,7 @@ void Bullet::SetRotation(float _rotation)
 
 void Bullet::Update()
 {
+	LifeTime();
 	WallCollision();
 }
 
@@ -108,6 +109,14 @@ void Bullet::AddPosition(Vector2 pos)
 {
 	position.x += pos.x * GetFrameTime();
 	position.y -= pos.y * GetFrameTime();
+}
+
+void Bullet::LifeTime()
+{
+	if (lifeSpawn >= 60)
+	{
+		ResetData();
+	}
 }
 
 void Bullet::WallCollision()

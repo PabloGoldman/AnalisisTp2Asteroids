@@ -62,7 +62,7 @@ void Gameplay::Input()
 
 void Gameplay::Update()
 {
-	MovePlayer();
+	PlayerLogic();
 }
 
 void Gameplay::Draw()
@@ -77,7 +77,7 @@ void Gameplay::SetSceneManager(SceneManager* sc)
 	scene = sc;
 }
 
-void Gameplay::MovePlayer()
+void Gameplay::PlayerLogic()
 {
 	player->Update();
 	RotatePlayer();
@@ -146,6 +146,7 @@ void Gameplay::ResetPlayerData(Player* player)
 	player->SetHeight((20.0f / 2) / tanf(20 * DEG2RAD));
 	player->SetAcceleration(0);
 	player->SetRotation(0);
+
 }
 
 void Gameplay::InitGameplay()
@@ -161,6 +162,8 @@ void Gameplay::InitGameplay()
 void Gameplay::SetPlayerData(Player* player, Vector2 pos)
 {
 	SetPlayerPosition(player, pos);
+	player->SetCollider({ player->GetPos().x + (float)sin(player->GetRotation() * DEG2RAD)
+		* (player->GetHeight() / 2.5f), player->GetPos().y - (float)cos(player->GetRotation() * DEG2RAD) * (player->GetHeight() / 2.5f), 12 });
 }
 
 void Gameplay::SetPlayerPosition(Player* player, Vector2 pos)

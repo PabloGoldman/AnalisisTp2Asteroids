@@ -26,6 +26,7 @@ public:
 
 	Vector2 GetSpeed();
 	Vector2 GetPos();
+	Vector3 GetCollider();
 	int GetPoints();
 	float GetAcceleration();
 	float GetRotation();
@@ -40,6 +41,7 @@ public:
 	void SetColor(Color _color);
 	void SetHeight(int _height);
 	void SetPoints(int _points);
+	void SetCollider(Vector3 _collider);
 	void SetPlayerPos(Vector2 _position);
 	void AddPoints(int _points);
 	void Draw();

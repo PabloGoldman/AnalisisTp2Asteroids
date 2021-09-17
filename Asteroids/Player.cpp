@@ -45,6 +45,11 @@ Vector2 Player::GetPos()
 	return position;
 }
 
+Vector3 Player::GetCollider()
+{
+	return collider;
+}
+
 int Player::GetPoints()
 {
 	return points;
@@ -111,6 +116,11 @@ void Player::SetPoints(int _points)
 	points = _points;
 }
 
+void Player::SetCollider(Vector3 _collider)
+{
+	collider = _collider;
+}
+
 void Player::SetPlayerPos(Vector2 _pos)
 {
 	position = _pos;
@@ -171,9 +181,5 @@ void Player::Update()
 	{
 		bullet[i]->Update();
 		bullet[i]->AddPosition({ bullet[i]->GetSpeed().x, bullet[i]->GetSpeed().y });
-		if (bullet[i]->GetLifeSpawn() >= 60)
-		{
-			bullet[i]->ResetData();
-		}
 	}
 }
