@@ -252,8 +252,6 @@ void Gameplay::ResetData()
 	player->SetCollider({ player->GetPos().x + (float)sin(player->GetRotation() * DEG2RAD)
 		* (player->GetHeight() / 2.5f), player->GetPos().y - (float)cos(player->GetRotation() * DEG2RAD) * (player->GetHeight() / 2.5f), 12 });
 	player->SetRotation(0);
-	player->SetCollider({ player->GetPos().x + (float)sin(player->GetRotation() * DEG2RAD)
-		* (player->GetHeight() / 2.5f), player->GetPos().y - (float)cos(player->GetRotation() * DEG2RAD) * (player->GetHeight() / 2.5f), 12 });
 	player->SetPlayerPos({ screenWidth / 2, screenHeight / 2 - player->GetHeight() / 2 });
 }
 
@@ -287,6 +285,8 @@ void Gameplay::Move()
 
 void Gameplay::PlayerMeteorsCollision()
 {
+	player->SetCollider({ player->GetPos().x + (float)sin(player->GetRotation() * DEG2RAD)
+		* (player->GetHeight() / 2.5f), player->GetPos().y - (float)cos(player->GetRotation() * DEG2RAD) * (player->GetHeight() / 2.5f), 20 });
 	for (int i = 0; i < bigMeteors; i++)
 	{
 		if (CheckCollisionCircles({player->GetCollider().x,player->GetCollider().y},
