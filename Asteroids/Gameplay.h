@@ -44,6 +44,7 @@ private:
 	void PlayerMeteorsCollision();
 	void MeteorsLogic();
 	void BulletMeteorsCollision();
+	void CheckWin();
 
 	float Vector2Angle(Vector2 v1, Vector2 v2);
 

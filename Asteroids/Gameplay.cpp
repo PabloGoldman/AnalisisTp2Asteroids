@@ -142,6 +142,7 @@ void Gameplay::GameUpdate()
 	PlayerMeteorsCollision();
 	BulletMeteorsCollision();
 	MeteorsLogic();
+	CheckWin();
 }
 
 void Gameplay::BulletMeteorsCollision()
@@ -160,17 +161,17 @@ void Gameplay::BulletMeteorsCollision()
 					player->AddPoints(1);
 					destroyedMeteors++;
 
-					for (int k = 0; k < 2; k++)
+					for (int j = 0; j < 2; j++)
 					{
+						mediumMeteor[mediumMeteorsCounteds]->SetPosition(bigMeteor[k]->GetPosition());
+
 						if (mediumMeteorsCounteds % 2 == 0)
 						{
-							mediumMeteor[mediumMeteorsCounteds]->SetPosition(bigMeteor[k]->GetPosition());
 							mediumMeteor[mediumMeteorsCounteds]->SetSpeed({ (float)cos(bullet[i]->GetRotation() * DEG2RAD * 2 * -1), (float)sin(bullet[i]->GetRotation() * DEG2RAD * 2 * -1) });
 						}
 						else
 						{
-							mediumMeteor[mediumMeteorsCounteds]->SetPosition(bigMeteor[k]->GetPosition());
-							mediumMeteor[mediumMeteorsCounteds]->SetSpeed({ (float)cos(bullet[i]->GetRotation() * DEG2RAD * 2), (float)sin(bullet[i]->GetRotation() * DEG2RAD * 2 * -1) });
+							mediumMeteor[mediumMeteorsCounteds]->SetSpeed({ (float)cos(bullet[i]->GetRotation() * DEG2RAD * 2), (float)sin(bullet[i]->GetRotation() * DEG2RAD * 2) });
 						}
 						mediumMeteor[mediumMeteorsCounteds]->SetActive(true);
 						mediumMeteorsCounteds++;
@@ -189,17 +190,17 @@ void Gameplay::BulletMeteorsCollision()
 						player->AddPoints(1);
 						destroyedMeteors++;
 
-						for (int k = 0; k < 2; k++)
+						for (int j = 0; j < 2; j++)
 						{
+							smallMeteor[smallMeteorsCounteds]->SetPosition(mediumMeteor[k]->GetPosition());
+
 							if (smallMeteorsCounteds % 2 == 0)
 							{
-								smallMeteor[mediumMeteorsCounteds]->SetPosition(mediumMeteor[k]->GetPosition());
-								smallMeteor[mediumMeteorsCounteds]->SetSpeed({ (float)cos(bullet[i]->GetRotation() * DEG2RAD * 2 * -1), (float)sin(bullet[i]->GetRotation() * DEG2RAD * 2 * -1) });
+								smallMeteor[smallMeteorsCounteds]->SetSpeed({ (float)cos(bullet[i]->GetRotation() * DEG2RAD * 2 * -1), (float)sin(bullet[i]->GetRotation() * DEG2RAD * 2 * -1) });
 							}
 							else
 							{
-								smallMeteor[mediumMeteorsCounteds]->SetPosition(bigMeteor[k]->GetPosition());
-								smallMeteor[mediumMeteorsCounteds]->SetSpeed({ (float)cos(bullet[i]->GetRotation() * DEG2RAD * 2), (float)sin(bullet[i]->GetRotation() * DEG2RAD * 2 * -1) });
+								smallMeteor[smallMeteorsCounteds]->SetSpeed({ (float)cos(bullet[i]->GetRotation() * DEG2RAD * 2), (float)sin(bullet[i]->GetRotation() * DEG2RAD * 2) });
 							}
 							smallMeteor[smallMeteorsCounteds]->SetActive(true);
 							smallMeteorsCounteds++;
@@ -224,7 +225,11 @@ void Gameplay::BulletMeteorsCollision()
 		}
 	}
 
-	//VICTORIA
+	
+}
+
+void Gameplay::CheckWin() 
+{
 	if (destroyedMeteors == 28)
 		scene->SetSceneManager(Scene::ENDGAME);
 }
