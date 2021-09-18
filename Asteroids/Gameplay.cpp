@@ -38,6 +38,11 @@ Gameplay::Gameplay()
 	{
 		bullet[i] = new Bullet();
 	}
+
+	for (int i = 0; i < totalBullets; i++)
+	{
+		player->SetBullets(bullet[i]);
+	}
 }
 
 Gameplay::~Gameplay()
@@ -142,7 +147,7 @@ void Gameplay::GameUpdate()
 	PlayerMeteorsCollision();
 	BulletMeteorsCollision();
 	MeteorsLogic();
-	CheckWin();
+	CheckGameState();
 }
 
 void Gameplay::BulletMeteorsCollision()
@@ -228,10 +233,28 @@ void Gameplay::BulletMeteorsCollision()
 	
 }
 
-void Gameplay::CheckWin() 
+void Gameplay::CheckGameState() 
 {
-	if (destroyedMeteors == 28)
+	if (destroyedMeteors == 28 || gameOver)
+	{
+		ResetData();
+		SetMeteorsData();
+		gameOver = false;
 		scene->SetSceneManager(Scene::ENDGAME);
+	}
+}
+
+void Gameplay::ResetData()
+{
+	player->SetPoints(0);
+	player->SetHeight((20.0f / 2) / tanf(20 * DEG2RAD));
+	player->SetAcceleration(0);
+	player->SetCollider({ player->GetPos().x + (float)sin(player->GetRotation() * DEG2RAD)
+		* (player->GetHeight() / 2.5f), player->GetPos().y - (float)cos(player->GetRotation() * DEG2RAD) * (player->GetHeight() / 2.5f), 12 });
+	player->SetRotation(0);
+	player->SetCollider({ player->GetPos().x + (float)sin(player->GetRotation() * DEG2RAD)
+		* (player->GetHeight() / 2.5f), player->GetPos().y - (float)cos(player->GetRotation() * DEG2RAD) * (player->GetHeight() / 2.5f), 12 });
+	player->SetPlayerPos({ screenWidth / 2, screenHeight / 2 - player->GetHeight() / 2 });
 }
 
 void Gameplay::MeteorsLogic()
@@ -269,7 +292,7 @@ void Gameplay::PlayerMeteorsCollision()
 		if (CheckCollisionCircles({player->GetCollider().x,player->GetCollider().y},
 		player->GetCollider().z,bigMeteor[i]->GetPosition(), bigMeteor[i]->GetRadius()) && bigMeteor[i]->GetActive())
 		{
-			//scene->SetSceneManager(Scene::ENDGAME);
+			gameOver = true;
 		}
 	}
 	for (int i = 0; i < mediumMeteors; i++)
@@ -277,7 +300,7 @@ void Gameplay::PlayerMeteorsCollision()
 		if (CheckCollisionCircles({ player->GetCollider().x,player->GetCollider().y },
 			player->GetCollider().z, mediumMeteor[i]->GetPosition(), mediumMeteor[i]->GetRadius()) && mediumMeteor[i]->GetActive())
 		{
-			scene->SetSceneManager(Scene::ENDGAME);
+			gameOver = true;
 		}
 	}
 	for (int i = 0; i < smallMeteors; i++)
@@ -285,7 +308,7 @@ void Gameplay::PlayerMeteorsCollision()
 		if (CheckCollisionCircles({ player->GetCollider().x,player->GetCollider().y },
 			player->GetCollider().z, smallMeteor[i]->GetPosition(), smallMeteor[i]->GetRadius()) && smallMeteor[i]->GetActive())
 		{
-			scene->SetSceneManager(Scene::ENDGAME);
+			gameOver = true;
 		}
 	}
 }
@@ -328,23 +351,12 @@ void Gameplay::DrawPlayerPoints(Player* player, int x, int y)
 
 void Gameplay::ResetPlayerData(Player* player)
 {
-	ResetData(player);
-}
-
-void Gameplay::ResetData(Player* player)
-{
-	player->SetPoints(0);
-	player->SetHeight((20.0f / 2) / tanf(20 * DEG2RAD));
-	player->SetAcceleration(0);
-	player->SetCollider({ player->GetPos().x + (float)sin(player->GetRotation() * DEG2RAD)
-		* (player->GetHeight() / 2.5f), player->GetPos().y - (float)cos(player->GetRotation() * DEG2RAD) * (player->GetHeight() / 2.5f), 12 });
-	player->SetRotation(0);
+	ResetData();
 }
 
 void Gameplay::InitGameplay()
 {
-	ResetPlayerData(player);
-	SetPlayerData(player, { screenWidth / 2, screenHeight / 2 - player->GetHeight() / 2 });
+	ResetData();
 
 	SetMeteorsData();
 
@@ -375,18 +387,6 @@ void Gameplay::SetMeteorsData()
 		smallMeteor[i]->SetSpeed({ 0,0 });
 		smallMeteor[i]->SetRadius(10);
 		smallMeteor[i]->SetActive(false);
-	}
-}
-
-void Gameplay::SetPlayerData(Player* player, Vector2 pos)
-{
-	SetPlayerPosition(player, pos);
-	player->SetCollider({ player->GetPos().x + (float)sin(player->GetRotation() * DEG2RAD)
-		* (player->GetHeight() / 2.5f), player->GetPos().y - (float)cos(player->GetRotation() * DEG2RAD) * (player->GetHeight() / 2.5f), 12 });
-
-	for (int i = 0; i < totalBullets; i++)
-	{
-		player->SetBullets(bullet[i]);
 	}
 }
 

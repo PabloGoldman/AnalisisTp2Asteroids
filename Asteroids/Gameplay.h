@@ -26,15 +26,15 @@ private:
 	Player* player;
 
 	bool inPause;
+	bool gameOver;
 
 	void Input();
 	void Update();
 	void Draw();
-	void SetPlayerData(Player* player, Vector2 pos);
 	void SetPlayerPosition(Player* player, Vector2 pos);
 	void DrawPlayerPoints(Player* player, int x, int y);
 	void ResetPlayerData(Player* player);
-	void ResetData(Player* player);
+	void ResetData();
 	void GameUpdate();
 	void RotatePlayer();
 	void SetMovSpeed();
@@ -44,7 +44,7 @@ private:
 	void PlayerMeteorsCollision();
 	void MeteorsLogic();
 	void BulletMeteorsCollision();
-	void CheckWin();
+	void CheckGameState();
 
 	float Vector2Angle(Vector2 v1, Vector2 v2);
 

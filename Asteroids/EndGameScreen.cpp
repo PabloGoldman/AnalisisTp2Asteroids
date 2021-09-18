@@ -51,7 +51,6 @@ void EndGameScreen::CheckInput()
 	{
 		if (option == ENDGAMEOPTION::PLAY)
 			sceneManager->SetSceneManager(Scene::GAME);
-
 		else
 			sceneManager->SetSceneManager(Scene::MENU);
 	}
