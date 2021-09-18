@@ -15,19 +15,11 @@ Player::Player()
 	collider = { 0,0,0 };
 	position = { 0,0 };
 	rotation = 0;
-
-	for (int i = 0; i < totalBullets; i++)
-	{
-		bullet[i] = new Bullet();
-	}
 }
 
 Player::~Player()
 {
-	for (int i = 0; i < totalBullets; i++)
-	{
-		delete bullet[i];
-	}
+
 }
 
 Color Player::GetColor()
@@ -68,6 +60,12 @@ float Player::GetRotation()
 float Player::GetHeight()
 {
 	return height;
+}
+
+void Player::SetBullets(Bullet* _bullet)
+{
+	bullet[bulletTaken] = _bullet;
+	bulletTaken++;
 }
 
 void Player::AddPosition(Vector2 _pos)
@@ -183,3 +181,4 @@ void Player::Update()
 		bullet[i]->AddPosition({ bullet[i]->GetSpeed().x, bullet[i]->GetSpeed().y });
 	}
 }
+

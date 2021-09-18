@@ -5,10 +5,18 @@
 #include "InGamePause.h"
 #include "AudioManager.h"
 #include "EndGameScreen.h"
+#include "BigMeteor.h"
+#include "MediumMeteor.h"
+#include "SmallMeteor.h"
 
 class Gameplay
 {
 private:
+
+	Bullet* bullet[10];
+	BigMeteor* bigMeteor[4];
+	MediumMeteor* mediumMeteor[8];
+	SmallMeteor* smallMeteor[16];
 
 	EndGameScreen* endGameScreen;
 	AudioManager* audioManager;
@@ -27,11 +35,15 @@ private:
 	void DrawPlayerPoints(Player* player, int x, int y);
 	void ResetPlayerData(Player* player);
 	void ResetData(Player* player);
-	void MovePlayer();
+	void GameUpdate();
 	void RotatePlayer();
 	void SetMovSpeed();
 	void Accelerate();
 	void Move();
+	void SetMeteorsData();
+	void PlayerMeteorsCollision();
+	void MeteorsLogic();
+	void BulletMeteorsCollision();
 
 	float Vector2Angle(Vector2 v1, Vector2 v2);
 

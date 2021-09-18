@@ -18,6 +18,8 @@ private:
 	Color color;
 	int points;
 
+	int bulletTaken = 0;
+
 public:
 	Player();
 	~Player();
@@ -32,6 +34,7 @@ public:
 	float GetRotation();
 	float GetHeight();
 
+	void SetBullets(Bullet* _bullet);
 	void AddPosition(Vector2 _pos);
 	void AddRotation(float _rotation);
 	void AddAcceleration(float _acceleration);
