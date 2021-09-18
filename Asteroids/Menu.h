@@ -22,7 +22,6 @@ private:
 	void Draw();
 	void SetMenuOption();
 	void CheckInput();
-	void CheckOptionState();
 	void SetButtonsData(Button _button[], int posX, int posY, int height, int width);
 	void DrawButton(Button _button[], const char text[]);
 	void SetButtonsToFalse();

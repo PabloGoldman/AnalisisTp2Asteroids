@@ -6,7 +6,7 @@ class Player
 {
 private:
 
-	Bullet* bullet[10];
+	Bullet* bullet[4];
 	Vector2 position;
 	Vector2 speed;
 	float acceleration;

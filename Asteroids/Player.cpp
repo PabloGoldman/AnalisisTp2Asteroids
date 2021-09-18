@@ -3,7 +3,7 @@
 
 const int screenWidth = 800;
 const int screenHeight = 450;
-const int totalBullets = 10;
+const int totalBullets = 4;
 
 Player::Player()
 {

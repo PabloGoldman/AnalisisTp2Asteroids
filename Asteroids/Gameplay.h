@@ -13,7 +13,7 @@ class Gameplay
 {
 private:
 
-	Bullet* bullet[10];
+	Bullet* bullet[4];
 	BigMeteor* bigMeteor[4];
 	MediumMeteor* mediumMeteor[8];
 	SmallMeteor* smallMeteor[16];

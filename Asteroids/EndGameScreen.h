@@ -11,7 +11,6 @@ private:
 
 	SceneManager* sceneManager;
 
-	Button* gameFinished;
 	Button* replay;
 	Button* quit;
 

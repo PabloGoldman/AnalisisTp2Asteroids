@@ -5,7 +5,7 @@
 const int screenWidth = 800;
 const int screenHeight = 450;
 const int fontSize = 40;
-const int totalBullets = 10;
+const int totalBullets = 4;
 const int bigMeteors = 4;
 const int mediumMeteors = 8;
 const int smallMeteors = 16;
@@ -237,13 +237,13 @@ void Gameplay::CheckGameState()
 {
 	if (destroyedMeteors == 28 || gameOver)
 	{
-		ResetData();
-		gameOver = false;
 		if (destroyedMeteors == 28)
 			endGameScreen->SetWinPlayer(true);
 		else
 			endGameScreen->SetWinPlayer(false);
 
+		gameOver = false;
+		ResetData();
 		scene->SetSceneManager(Scene::ENDGAME);
 	}
 }
@@ -258,6 +258,9 @@ void Gameplay::ResetData()
 	player->SetRotation(0);
 	player->SetPlayerPos({ screenWidth / 2, screenHeight / 2 - player->GetHeight() / 2 });
 	SetMeteorsData();
+	destroyedMeteors = 0;
+	mediumMeteorsCounteds = 0;
+	smallMeteorsCounteds = 0;
 }
 
 void Gameplay::MeteorsLogic()

@@ -51,21 +51,15 @@ void InGamePause::SetMenuOption(OPTION _option)
 
 void InGamePause::CheckInput()
 {
-	if (IsKeyReleased(KEY_DOWN) || IsKeyReleased(KEY_S) || IsKeyReleased(KEY_UP) || IsKeyReleased(KEY_W))
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 	{
-		if (option == OPTION::RESUME)
-			option = OPTION::QUIT;
-		else
-			option = OPTION::RESUME;
-	}
-	else if (IsKeyReleased(KEY_ENTER))
-	{
-		if (option == OPTION::RESUME)
-			SetInPause(false);
-		else
+		if (CheckCollisionPointRec(GetMousePosition(), resume->GetRectangle()))
 		{
 			SetInPause(false);
-			SetMenuOption(OPTION::RESUME);
+		}
+		else if (CheckCollisionPointRec(GetMousePosition(), quit->GetRectangle()))
+		{
+			SetInPause(false);
 			sceneManager->SetSceneManager(Scene::MENU);
 		}
 	}
@@ -77,35 +71,23 @@ void InGamePause::DrawPauseMenu()
 
 	DrawRectangle(screenWidth / 2 - 250, screenHeight / 2 - 100, 500, 300, DARKBLUE);
 	resume->DrawButton(resume->GetRectangle(), "RESUME");
-	quit->DrawButton(resume->GetRectangle(), "QUIT");
+	quit->DrawButton(quit->GetRectangle(), "QUIT");
 }
 
 void InGamePause::Update()
 {
-	switch (option)
-	{
-	case OPTION::RESUME:
-		resume->SetActive(true);
-		quit->SetActive(false);
-		break;
-	case OPTION::QUIT:
-		resume->SetActive(false);
-		quit->SetActive(true);
-		break;
-	default:
-		break;
-	}
+	
 }
 
 void InGamePause::SetButtonsData()
 {
 	resume->SetRectanglePos(screenWidth / 2 - 80, screenHeight / 2 - 10);
-	quit->SetRectanglePos(screenWidth / 2 - 80, screenHeight / 2 + 50);
+	quit->SetRectanglePos(screenWidth / 2 - 80, screenHeight / 2 + 80);
 
-	quit->SetHeight(400);
+	quit->SetHeight(50);
 	quit->SetWidth(400);
 
-	resume->SetHeight(400);
+	resume->SetHeight(50);
 	resume->SetWidth(400);
 }
 

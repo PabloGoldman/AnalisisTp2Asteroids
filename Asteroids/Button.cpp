@@ -107,8 +107,12 @@ void Button::DrawButton(Rectangle rectangle, const char text[])
 
 	DrawTextRec(font, text, GetRectangle(), GetFontSize(), GetSpaceBetweenLetters(), false, GetColor());
 
-	if (isActive) //Dibuja el boton de la izquierda, el que muestra la seleccion
+	if (CheckCollisionPointRec(GetMousePosition(), rectangle)) 
 	{
-		DrawRectangle(GetRectangle().x - correctionX, GetRectangle().y + correctionY, optionButtonHeight, optionButtonWidth, GetColor());
+		color = RED;
+	}
+	else
+	{
+		color = BLACK;
 	}
 }

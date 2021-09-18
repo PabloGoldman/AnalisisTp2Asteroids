@@ -7,7 +7,7 @@ const int fontSize = 40;
 
 EndGameScreen::EndGameScreen()
 {
-	gameFinished = new Button();
+
 	replay = new Button();
 	quit = new Button();
 
@@ -18,7 +18,6 @@ EndGameScreen::~EndGameScreen()
 {
 	delete replay;
 	delete quit;
-	delete gameFinished;
 }
 
 ENDGAMEOPTION EndGameScreen::GetOption()
@@ -40,19 +39,16 @@ void EndGameScreen::SetOption(ENDGAMEOPTION _option)
 
 void EndGameScreen::CheckInput()
 {
-	if (IsKeyReleased(KEY_DOWN) || IsKeyReleased(KEY_S) || IsKeyReleased(KEY_UP) || IsKeyReleased(KEY_W))
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 	{
-		if (option == ENDGAMEOPTION::PLAY)
-			option = ENDGAMEOPTION::QUIT;
-		else
-			option = ENDGAMEOPTION::PLAY;
-	}
-	else if (IsKeyReleased(KEY_ENTER))
-	{
-		if (option == ENDGAMEOPTION::PLAY)
+		if (CheckCollisionPointRec(GetMousePosition(), replay->GetRectangle()))
+		{
 			sceneManager->SetSceneManager(Scene::GAME);
-		else
+		}
+		else if (CheckCollisionPointRec(GetMousePosition(), quit->GetRectangle()))
+		{
 			sceneManager->SetSceneManager(Scene::MENU);
+		}
 	}
 }
 
@@ -63,10 +59,9 @@ void EndGameScreen::DrawEndGameScreen()
 	DrawRectangle(screenWidth / 2 - 220, 20, 500, 400, DARKBLUE); //Fondo
 
 	if (player1Win)
-		gameFinished->DrawButton(gameFinished->GetRectangle(), "YOU WIN");
+		DrawText("YOU WIN", screenWidth / 2 - 100, 50, 50, BLACK);
 	else
-		gameFinished->DrawButton(gameFinished->GetRectangle(), "GAME OVER");
-
+		DrawText("GAME OVER", screenWidth / 2 - 100, 50, 50, BLACK);
 
 	replay->DrawButton(replay->GetRectangle(), "PLAY AGAIN");
 	quit->DrawButton(quit->GetRectangle(), "QUIT");
@@ -74,34 +69,18 @@ void EndGameScreen::DrawEndGameScreen()
 
 void EndGameScreen::Update()
 {
-	switch (option)
-	{
-	case ENDGAMEOPTION::PLAY:
-		replay->SetActive(true);
-		quit->SetActive(false);
-		break;
-	case ENDGAMEOPTION::QUIT:
-		replay->SetActive(false);
-		quit->SetActive(true);
-		break;
-	default:
-		break;
-	}
+
 }
 
 void EndGameScreen::SetButtonsData()
 {
-	gameFinished->SetRectanglePos(screenWidth / 2 - 100, 50);
 	replay->SetRectanglePos(screenWidth / 2 - 100, screenHeight / 2 - 50);
 	quit->SetRectanglePos(screenWidth / 2 - 100, screenHeight / 2 + 50);
 
-	gameFinished->SetHeight(400);
-	gameFinished->SetWidth(700);
-
-	replay->SetHeight(400);
+	replay->SetHeight(50);
 	replay->SetWidth(700);
 
-	quit->SetHeight(400);
+	quit->SetHeight(50);
 	quit->SetWidth(400);
 }
 

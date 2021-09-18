@@ -52,7 +52,6 @@ void Menu::InMenu()
 
 void Menu::Input()
 {
-	Menu::CheckOptionState();
 	Menu::CheckInput();
 }
 
@@ -76,10 +75,10 @@ void Menu::InitMenuData()
 {
 	LoadTextures();
 
-	SetButtonsData(_button[0], screenWidth * 0.5 - 100, PlayButtonPosition, 250, 300);
-	SetButtonsData(_button[1], screenWidth * 0.5 - 100, OptionsButtonPosition, 250, 300);
-	SetButtonsData(_button[2], screenWidth * 0.5 - 100, CreditsButtonPosition, 250, 300);
-	SetButtonsData(_button[3], screenWidth * 0.5 - 100, ExitButtonPosition, 250, 300);
+	SetButtonsData(_button[0], screenWidth * 0.5 - 100, PlayButtonPosition, 70, 300);
+	SetButtonsData(_button[1], screenWidth * 0.5 - 100, OptionsButtonPosition, 70, 300);
+	SetButtonsData(_button[2], screenWidth * 0.5 - 100, CreditsButtonPosition, 70, 300);
+	SetButtonsData(_button[3], screenWidth * 0.5 - 100, ExitButtonPosition, 70, 300);
 }
 
 void Menu::DrawLogo()
@@ -112,73 +111,28 @@ void Menu::DrawButton(Button _button[], const char text[])
 	_button->DrawButton(_button->GetRectangle(), text);
 }
 
-void Menu::CheckOptionState()
-{
-	if (IsKeyReleased(KEY_DOWN))
-	{
-		switch (menuScene)
-		{
-		case MenuScene::PLAY:
-			menuScene = MenuScene::OPTIONS;
-			break;
-		case MenuScene::OPTIONS:
-			menuScene = MenuScene::CREDITS;
-			break;
-		case MenuScene::CREDITS:
-			menuScene = MenuScene::EXIT;
-			break;
-		case MenuScene::EXIT:
-			menuScene = MenuScene::PLAY;
-			break;
-		default:
-			break;
-		}
-	}
-	else if (IsKeyReleased(KEY_UP))
-	{
-		switch (menuScene)
-		{
-		case MenuScene::PLAY:
-			menuScene = MenuScene::EXIT;
-			break;
-		case MenuScene::OPTIONS:
-			menuScene = MenuScene::PLAY;
-			break;
-		case MenuScene::CREDITS:
-			menuScene = MenuScene::OPTIONS;
-			break;
-		case MenuScene::EXIT:
-			menuScene = MenuScene::CREDITS;
-			break;
-		default:
-			break;
-		}
-	}
-}
-
 void Menu::CheckInput()
 {
-	if (IsKeyReleased(KEY_ENTER))
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 	{
-		switch (menuScene)
+		if (CheckCollisionPointRec(GetMousePosition(), _button[0]->GetRectangle()))
 		{
-		case MenuScene::PLAY:
 			sceneManager->SetSceneManager(Scene::GAME);
-			break;
-		case MenuScene::OPTIONS:
-			sceneManager->SetSceneManager(Scene::RULES);
-			break;
-		case MenuScene::CREDITS:
-			sceneManager->SetSceneManager(Scene::CREDITS);
-			break;
-		case MenuScene::EXIT:
-			sceneManager->SetSceneManager(Scene::EXIT);
-			break;
-		default:
-			break;
 		}
-		audioManager->PlayOptionSound();
+		else if (CheckCollisionPointRec(GetMousePosition(), _button[1]->GetRectangle()))
+		{
+			sceneManager->SetSceneManager(Scene::RULES);
+		}
+		else if (CheckCollisionPointRec(GetMousePosition(), _button[2]->GetRectangle()))
+		{
+			sceneManager->SetSceneManager(Scene::CREDITS);
+		}
+		else if (CheckCollisionPointRec(GetMousePosition(), _button[3]->GetRectangle()))
+		{
+			sceneManager->SetSceneManager(Scene::EXIT);
+		}
 	}
+	audioManager->PlayOptionSound();
 }
 
 void Menu::SetMenuOption()
