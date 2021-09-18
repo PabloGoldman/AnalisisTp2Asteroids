@@ -63,9 +63,9 @@ void EndGameScreen::DrawEndGameScreen()
 	DrawRectangle(screenWidth / 2 - 220, 20, 500, 400, DARKBLUE); //Fondo
 
 	if (player1Win)
-		gameFinished->DrawButton(gameFinished->GetRectangle(), "PLAYER 1 WINS");
+		gameFinished->DrawButton(gameFinished->GetRectangle(), "YOU WIN");
 	else
-		gameFinished->DrawButton(gameFinished->GetRectangle(), "PLAYER 2 WINS");
+		gameFinished->DrawButton(gameFinished->GetRectangle(), "GAME OVER");
 
 
 	replay->DrawButton(replay->GetRectangle(), "PLAY AGAIN");
@@ -91,7 +91,7 @@ void EndGameScreen::Update()
 
 void EndGameScreen::SetButtonsData()
 {
-	gameFinished->SetRectanglePos(screenWidth / 2 - 160, 50);
+	gameFinished->SetRectanglePos(screenWidth / 2 - 100, 50);
 	replay->SetRectanglePos(screenWidth / 2 - 100, screenHeight / 2 - 50);
 	quit->SetRectanglePos(screenWidth / 2 - 100, screenHeight / 2 + 50);
 

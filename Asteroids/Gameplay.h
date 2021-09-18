@@ -33,7 +33,6 @@ private:
 	void Draw();
 	void SetPlayerPosition(Player* player, Vector2 pos);
 	void DrawPlayerPoints(Player* player, int x, int y);
-	void ResetPlayerData(Player* player);
 	void ResetData();
 	void GameUpdate();
 	void RotatePlayer();

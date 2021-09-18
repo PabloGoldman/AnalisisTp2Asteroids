@@ -82,7 +82,7 @@ void Gameplay::InGame()
 		pause->InPause();
 		if (scene->GetScene() == Scene::MENU)
 		{
-			ResetPlayerData(player);
+			ResetData();
 		}
 	}
 	audioManager->PlayGameMusic();
@@ -129,7 +129,7 @@ void Gameplay::Draw()
 		smallMeteor[i]->Draw();
 	}
 
-	DrawPlayerPoints(player, 300, 50);
+	DrawPlayerPoints(player, screenWidth / 2 - 20, 50);
 }
 
 void Gameplay::SetSceneManager(SceneManager* sc)
@@ -238,8 +238,12 @@ void Gameplay::CheckGameState()
 	if (destroyedMeteors == 28 || gameOver)
 	{
 		ResetData();
-		SetMeteorsData();
 		gameOver = false;
+		if (destroyedMeteors == 28)
+			endGameScreen->SetWinPlayer(true);
+		else
+			endGameScreen->SetWinPlayer(false);
+
 		scene->SetSceneManager(Scene::ENDGAME);
 	}
 }
@@ -253,6 +257,7 @@ void Gameplay::ResetData()
 		* (player->GetHeight() / 2.5f), player->GetPos().y - (float)cos(player->GetRotation() * DEG2RAD) * (player->GetHeight() / 2.5f), 12 });
 	player->SetRotation(0);
 	player->SetPlayerPos({ screenWidth / 2, screenHeight / 2 - player->GetHeight() / 2 });
+	SetMeteorsData();
 }
 
 void Gameplay::MeteorsLogic()
@@ -349,16 +354,9 @@ void Gameplay::DrawPlayerPoints(Player* player, int x, int y)
 	hud->DrawPoints(player->GetPoints(), x, y, fontSize, BLACK);
 }
 
-void Gameplay::ResetPlayerData(Player* player)
-{
-	ResetData();
-}
-
 void Gameplay::InitGameplay()
 {
 	ResetData();
-
-	SetMeteorsData();
 
 	SetInGamePauseData();
 
