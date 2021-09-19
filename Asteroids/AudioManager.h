@@ -18,7 +18,7 @@ public:
 	AudioManager();
 	~AudioManager();
 
-	void InitMusic(Music music);
+	void InitMusic();
 
 	Music GetMenuMusic();
 	void StopAllMusics();

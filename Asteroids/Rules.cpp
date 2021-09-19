@@ -12,13 +12,10 @@ void Rules::InRules()
 void Rules::DrawRules()
 {
 	Font font = GetFontDefault();
-	DrawText("Left player controls are  | W , S |", 10, 10, fontSize, BLACK);
-	DrawText("Right player controls are |Up arrow , Down arrow| ", 10, 60, fontSize, BLACK);
-	DrawText("First player to reach 10 points win the game", 10, 110, fontSize, BLACK);
-	DrawText("If a player hits 7 points, the other player will get a buff!", 10, 160, fontSize, BLACK);
-	DrawText("Take care if both players reach 7 points!", 10, 210, fontSize, BLACK);
-	DrawText("Press |P| to pause the game while playing", 10, 260, fontSize, BLACK);
-	DrawText("Press enter to continue...", 10, 400, fontSize, BLACK);
+	DrawText("You control the player with the mouse", 10, 10, fontSize, BLACK);
+	DrawText("Right click to accelerate", 10, 60, fontSize, BLACK);
+	DrawText("Left click to shoot", 10, 110, fontSize, BLACK);
+	DrawText("Click any part of the screen to continue...", 10, 400, 30, BLACK);
 }
 
 void Rules::SetSceneManager(SceneManager* sm)
@@ -33,7 +30,7 @@ void Rules::ReturnToMenu()
 
 void Rules::CheckInput()
 {
-	if (IsKeyReleased(KEY_ENTER))
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 	{
 		ReturnToMenu();
 	}
