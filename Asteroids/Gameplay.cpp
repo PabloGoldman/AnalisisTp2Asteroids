@@ -19,6 +19,7 @@ Gameplay::Gameplay()
 	player = new Player();
 	hud = new HUD();
 	pause = new InGamePause();
+	powerUp = new PowerUp();
 	inPause = false;
 
 	for (int i = 0; i < bigMeteors; i++)

@@ -8,6 +8,7 @@
 #include "BigMeteor.h"
 #include "MediumMeteor.h"
 #include "SmallMeteor.h"
+#include "PowerUp.h"
 
 class Gameplay
 {
@@ -17,6 +18,7 @@ private:
 	BigMeteor* bigMeteor[4];
 	MediumMeteor* mediumMeteor[8];
 	SmallMeteor* smallMeteor[16];
+	PowerUp* powerUp;
 
 	EndGameScreen* endGameScreen;
 	AudioManager* audioManager;

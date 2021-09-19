@@ -76,6 +76,9 @@
     <Filter Include="Screens\Gameplay\Bullet">
       <UniqueIdentifier>{95492a78-e20c-4200-98de-6ebbd5cf2bc6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Screens\Gameplay\PowerUp">
+      <UniqueIdentifier>{a28808ca-b15f-4af7-92e6-bcab702902f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -132,6 +135,9 @@
     <ClCompile Include="SmallMeteor.cpp">
       <Filter>Screens\Gameplay\Meteors\SmallMeteor</Filter>
     </ClCompile>
+    <ClCompile Include="PowerUp.cpp">
+      <Filter>Screens\Gameplay\PowerUp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -184,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="SmallMeteor.h">
       <Filter>Screens\Gameplay\Meteors\SmallMeteor</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerUp.h">
+      <Filter>Screens\Gameplay\PowerUp</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

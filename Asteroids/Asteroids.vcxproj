@@ -163,6 +163,7 @@
     <ClCompile Include="MediumMeteor.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PowerUp.cpp" />
     <ClCompile Include="Rules.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SmallMeteor.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="MediumMeteor.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PowerUp.h" />
     <ClInclude Include="Rules.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SmallMeteor.h" />
