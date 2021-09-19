@@ -10,6 +10,8 @@ const int bigMeteors = 4;
 const int mediumMeteors = 8;
 const int smallMeteors = 16;
 
+bool hasPowerUp = false;
+
 int mediumMeteorsCounteds = 0;
 int smallMeteorsCounteds = 0;
 int destroyedMeteors = 0;
@@ -44,6 +46,8 @@ Gameplay::Gameplay()
 	{
 		player->SetBullets(bullet[i]);
 	}
+
+	time = 0;
 }
 
 Gameplay::~Gameplay()
@@ -51,6 +55,7 @@ Gameplay::~Gameplay()
 	delete player;
 	delete hud;
 	delete pause;
+	delete powerUp;
 
 	for (int i = 0; i < bigMeteors; i++)
 	{
@@ -95,6 +100,21 @@ bool Gameplay::GetInPause()
 	return inPause;
 }
 
+void Gameplay::ResetPowerUp()
+{
+	if (hasPowerUp)
+	{
+		time += GetFrameTime();
+	}
+	if (time >= 10)
+	{
+		player->SetHeight((20.0f / 2) / tanf(20 * DEG2RAD));
+		player->SetSpeed({ {sin(player->GetRotation() * DEG2RAD) * 100.0f},
+		{cos(player->GetRotation() * DEG2RAD) * 100.0f} });
+		time = 0;
+	}
+}
+
 void Gameplay::SetInPause(bool pause)
 {
 	inPause = pause;
@@ -116,6 +136,7 @@ void Gameplay::Update()
 void Gameplay::Draw()
 {
 	player->Draw();
+	powerUp->Draw();
 
 	for (int i = 0; i < bigMeteors; i++)
 	{
@@ -141,6 +162,7 @@ void Gameplay::SetSceneManager(SceneManager* sc)
 void Gameplay::GameUpdate()
 {
 	player->Update();
+
 	RotatePlayer();
 	SetMovSpeed();
 	Accelerate();
@@ -149,6 +171,32 @@ void Gameplay::GameUpdate()
 	BulletMeteorsCollision();
 	MeteorsLogic();
 	CheckGameState();
+	PowerUpCollision();
+	ResetPowerUp();
+
+	powerUp->Update();
+}
+
+
+void Gameplay::PowerUpCollision()
+{
+	if (CheckCollisionCircles({ player->GetCollider().x,player->GetCollider().y },
+		player->GetCollider().z, powerUp->GetPosition(), powerUp->GetRadius()) && powerUp->GetActive())
+	{
+		int aux = GetRandomValue(1, 2);
+		if (aux == 1)
+		{
+			player->SetHeight((20.0f / 4) / tanf(15 * DEG2RAD));
+		}
+		else
+		{
+			player->SetSpeed({ {sin(player->GetRotation() * DEG2RAD) * 150.0f},
+		{cos(player->GetRotation() * DEG2RAD) * 150.0f} });
+		}
+		powerUp->SetActive(false);
+		powerUp->SetTime(0);
+		hasPowerUp = true;
+	}
 }
 
 void Gameplay::BulletMeteorsCollision()
@@ -231,10 +279,10 @@ void Gameplay::BulletMeteorsCollision()
 		}
 	}
 
-	
+
 }
 
-void Gameplay::CheckGameState() 
+void Gameplay::CheckGameState()
 {
 	if (destroyedMeteors == 28 || gameOver)
 	{
@@ -298,8 +346,8 @@ void Gameplay::PlayerMeteorsCollision()
 		* (player->GetHeight() / 2.5f), player->GetPos().y - (float)cos(player->GetRotation() * DEG2RAD) * (player->GetHeight() / 2.5f), 20 });
 	for (int i = 0; i < bigMeteors; i++)
 	{
-		if (CheckCollisionCircles({player->GetCollider().x,player->GetCollider().y},
-		player->GetCollider().z,bigMeteor[i]->GetPosition(), bigMeteor[i]->GetRadius()) && bigMeteor[i]->GetActive())
+		if (CheckCollisionCircles({ player->GetCollider().x,player->GetCollider().y },
+			player->GetCollider().z, bigMeteor[i]->GetPosition(), bigMeteor[i]->GetRadius()) && bigMeteor[i]->GetActive())
 		{
 			gameOver = true;
 		}

@@ -29,6 +29,7 @@ private:
 
 	bool inPause;
 	bool gameOver;
+	float time;
 
 	void Input();
 	void Update();
@@ -46,6 +47,8 @@ private:
 	void MeteorsLogic();
 	void BulletMeteorsCollision();
 	void CheckGameState();
+	void PowerUpCollision();
+	void ResetPowerUp();
 
 	float Vector2Angle(Vector2 v1, Vector2 v2);
 

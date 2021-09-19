@@ -1,7 +1,15 @@
 #include "PowerUp.h"
+const int screenWidth = 800;
+const int screenHeight = 450;
+
 
 PowerUp::PowerUp()
 {
+	active = false;
+	color = YELLOW;
+	position = { -100,100 };
+	radius = 20;
+	time = 0;
 }
 
 PowerUp::~PowerUp()
@@ -27,6 +35,11 @@ Color PowerUp::GetColor()
 bool PowerUp::GetActive()
 {
 	return active;
+}
+
+void PowerUp::SetTime(float _time)
+{
+	time = _time;
 }
 
 void PowerUp::SetPosition(Vector2 _position)
@@ -55,4 +68,18 @@ void PowerUp::Draw()
 		DrawCircleV(position, radius, YELLOW);
 	else
 		DrawCircleV(position, radius, Fade(LIGHTGRAY, 0.3f));
+}
+
+void PowerUp::Update()
+{
+	time += GetFrameTime();
+
+	if (time >= 20)
+	{
+		if (!active)
+		{
+			position = {((float)GetRandomValue(0, screenWidth)),((float)GetRandomValue(0, screenHeight)) };
+		}
+		active = true;
+	}
 }

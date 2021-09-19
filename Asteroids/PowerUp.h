@@ -8,6 +8,8 @@ class PowerUp
 		float radius;
 		Color color;
 		bool active;
+		float time;
+
 	public:
 		PowerUp();
 		~PowerUp();
@@ -16,6 +18,7 @@ class PowerUp
 		Color GetColor();
 		bool GetActive();
 
+		void SetTime(float _time);
 		void SetPosition(Vector2 _position);
 		void SetRadius(float _radius);
 		void SetActive(bool _active);
