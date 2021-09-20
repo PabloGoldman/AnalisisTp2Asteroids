@@ -3,11 +3,18 @@
 class Bullet
 {
 	private:
+        const float screenWidth = 800;
+        const float screenHeight = 450;
+
+        float windowReSizeWidth = GetScreenWidth() / screenWidth;
+        float windowReSizeHeight = GetScreenHeight() / screenHeight;
+
         Vector2 position;
         Vector2 speed;
         float radius;
         float rotation;
         float lifeSpawn;
+        float lifeTime;
         bool active;
         Color color;
 
@@ -30,6 +37,7 @@ class Bullet
         void SetIsActive(bool _active);
         void SetColor(Color _color);
         void SetRotation(float _rotation);
+        void SetLifeTime(float _lifetime);
         
         void Update();
         //void Movement();

@@ -44,7 +44,8 @@ int Text::GetSpaceBetweenLetters()
 
 void Text::SetSize(int _size)
 {
-	size = _size;
+	windowReSizeHeight = GetScreenHeight() / screenHeight;
+	size = _size * windowReSizeHeight;
 }
 
 void Text::SetColor(Color _color)

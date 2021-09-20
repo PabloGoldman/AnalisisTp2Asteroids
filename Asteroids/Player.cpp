@@ -1,9 +1,7 @@
 #include "Player.h"
 #include <math.h>
 
-const int screenWidth = 800;
-const int screenHeight = 450;
-const int totalBullets = 4;
+const int totalBullets = 3;
 
 Player::Player()
 {
@@ -107,7 +105,9 @@ void Player::SetColor(Color _color)
 
 void Player::SetHeight(int _height)
 {
-	height = _height;
+	windowReSizeHeight = GetScreenHeight() / screenHeight;
+
+	height = _height * windowReSizeHeight;
 }
 
 void Player::SetPoints(int _points)
@@ -134,8 +134,8 @@ void Player::Draw()
 {
 	//Matematica sacada de raylib
 	Vector2 v1 = { position.x + sinf(rotation * DEG2RAD) * (height),position.y - cosf(rotation * DEG2RAD) * (height) };
-	Vector2 v2 = { position.x - cosf(rotation * DEG2RAD) * (20.0f / 2),position.y - sinf(rotation * DEG2RAD) * (20.0f / 2) };
-	Vector2 v3 = { position.x + cosf(rotation * DEG2RAD) * (20.0f / 2),position.y + sinf(rotation * DEG2RAD) * (20.0f / 2) };
+	Vector2 v2 = { position.x - cosf(rotation * DEG2RAD) * (20.0f / 2) * windowReSizeWidth,position.y - sinf(rotation * DEG2RAD) * (20.0f / 2) * windowReSizeHeight };
+	Vector2 v3 = { position.x + cosf(rotation * DEG2RAD) * (20.0f / 2) * windowReSizeWidth,position.y + sinf(rotation * DEG2RAD) * (20.0f / 2) * windowReSizeHeight };
 	DrawTriangle(v1, v2, v3, color);
 
 	for (int i = 0; i < totalBullets; i++)
@@ -146,14 +146,17 @@ void Player::Draw()
 
 void Player::WallCollision()
 {
-	if (position.x > screenWidth + height)
+	windowReSizeHeight = GetScreenHeight() / screenHeight;
+	windowReSizeWidth = GetScreenWidth() / screenWidth;
+
+	if (position.x > (GetScreenWidth() + height))
 		position.x = -(height);
 	else if (position.x < -(height))
-		position.x = screenWidth + height;
-	if (position.y > (screenHeight + height))
+		position.x = GetScreenWidth() + height;
+	if (position.y > (GetScreenHeight() + height))
 		position.y = -(height);
 	else if (position.y < -(height))
-		position.y = screenHeight + height;
+		position.y = GetScreenHeight() + height;
 }
 
 void Player::Shoot()

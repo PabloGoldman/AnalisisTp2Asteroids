@@ -80,18 +80,23 @@ void Button::SetActive(bool _isActive)
 
 void Button::SetWidth(int _width)
 {
-	rectangle.width = _width;
+	windowReSizeWidth = GetScreenWidth() / screenWidth;
+	rectangle.width = _width * windowReSizeWidth;
 }
 
 void Button::SetHeight(int _height)
 {
-	rectangle.height = _height;
+	windowReSizeHeight = GetScreenHeight() / screenHeight;
+	rectangle.height = _height * windowReSizeHeight;
 }
 
 void Button::SetRectanglePos(int posX, int posY)
 {
-	rectangle.x = posX;
-	rectangle.y = posY;
+	windowReSizeWidth = GetScreenWidth() / screenWidth;
+	windowReSizeHeight = GetScreenHeight() / screenHeight;
+
+	rectangle.x = posX * windowReSizeWidth;
+	rectangle.y = posY * windowReSizeHeight;
 }
 
 void Button::SetColor(Color _color)

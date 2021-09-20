@@ -8,6 +8,12 @@ enum class OPTION { RESUME, QUIT };
 class InGamePause
 {
 private:
+	const float screenWidth = 800;
+	const float screenHeight = 450;
+
+	float windowReSizeWidth = GetScreenWidth() / screenWidth;
+	float windowReSizeHeight = GetScreenHeight() / screenHeight;
+
 	OPTION option;
 
 	SceneManager* sceneManager;

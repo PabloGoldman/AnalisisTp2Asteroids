@@ -14,7 +14,7 @@ class Gameplay
 {
 private:
 
-	Bullet* bullet[4];
+	Bullet* bullet[5];
 	BigMeteor* bigMeteor[4];
 	MediumMeteor* mediumMeteor[8];
 	SmallMeteor* smallMeteor[16];
@@ -30,6 +30,15 @@ private:
 	bool inPause;
 	bool gameOver;
 	float time;
+
+	const float screenWidth = 800;
+	const float screenHeight = 450;
+
+	const float currentScreenWidth = GetScreenWidth();
+	const float currentScreenHeight = GetScreenHeight();
+
+	float windowReSizeWidth = currentScreenWidth / screenWidth;
+	float windowReSizeHeight = currentScreenHeight / screenHeight;
 
 	void Input();
 	void Update();

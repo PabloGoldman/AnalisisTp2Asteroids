@@ -1,6 +1,5 @@
 #include "SmallMeteor.h"
-const int screenWidth = 800;
-const int screenHeight = 450;
+
 
 SmallMeteor::SmallMeteor()
 {
@@ -57,7 +56,9 @@ void SmallMeteor::SetPosition(Vector2 _position)
 
 void SmallMeteor::SetRadius(float _radius)
 {
-	radius = _radius;
+	windowReSizeWidth = GetScreenWidth() / screenWidth;
+
+	radius = _radius * windowReSizeWidth;
 }
 
 void SmallMeteor::SetActive(bool _active)
@@ -75,19 +76,22 @@ void SmallMeteor::Draw()
 
 void SmallMeteor::Update()
 {
+	windowReSizeWidth = GetScreenWidth() / screenWidth;
+	windowReSizeHeight = GetScreenWidth() / screenHeight;
+
 	if (active)
 	{
 		position.x += speed.x * 100 * GetFrameTime();
 		position.y += speed.y * 100 * GetFrameTime();
 
-		if (position.x > screenWidth + radius)
+		if (position.x > (screenWidth * windowReSizeWidth + radius))
 			position.x = -(radius);
 		else if (position.x < 0 - radius)
-			position.x = screenWidth + radius;
-		if (position.y > screenHeight + radius)
+			position.x = screenWidth * windowReSizeWidth + radius;
+		if (position.y > screenHeight * windowReSizeHeight + radius)
 			position.y = -(radius);
 		else if (position.y < 0 - radius)
-			position.y = screenHeight + radius;
+			position.y = screenHeight * windowReSizeHeight + radius;
 	}
 }
 

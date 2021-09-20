@@ -1,8 +1,5 @@
 #include "BigMeteor.h"
 
-const int screenWidth = 800;
-const int screenHeight = 450;
-
 BigMeteor::BigMeteor()
 {
 	active = false;
@@ -54,7 +51,9 @@ void BigMeteor::SetPosition(Vector2 _position)
 
 void BigMeteor::SetRadius(float _radius)
 {
-	radius = _radius;
+	windowReSizeWidth = GetScreenWidth() / screenWidth;
+
+	radius = _radius * windowReSizeWidth;
 }
 
 void BigMeteor::SetActive(bool _active)
@@ -77,18 +76,23 @@ void BigMeteor::Draw()
 
 void BigMeteor::Update()
 {
+	windowReSizeWidth = GetScreenWidth() / screenWidth;
+	windowReSizeHeight = GetScreenWidth() / screenHeight;
+
 	if (active)
 	{
 		position.x += speed.x * 100 * GetFrameTime();
 		position.y += speed.y * 100 * GetFrameTime();
 
-		if (position.x > screenWidth + radius)
+		if (position.x > (GetScreenWidth() + radius))
 			position.x = -(radius);
-		else if (position.x < 0 - radius)
-			position.x = screenWidth + radius;
-		if (position.y > screenHeight + radius)
+		else if (position.x < 0 - radius) 
+			position.x = GetScreenWidth() + radius;
+		if (position.y > GetScreenHeight() + radius)
 			position.y = -(radius);
 		else if (position.y < 0 - radius)
-			position.y = screenHeight + radius;
+			position.y = GetScreenHeight() + radius;
 	}
+
+	
 }

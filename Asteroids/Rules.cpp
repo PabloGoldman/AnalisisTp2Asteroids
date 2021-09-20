@@ -1,7 +1,7 @@
 #include "Rules.h"
 #include "raylib.h"
 
-const int fontSize = 28;
+const int fontSize = 40;
 
 void Rules::InRules()
 {
@@ -11,11 +11,14 @@ void Rules::InRules()
 
 void Rules::DrawRules()
 {
+	windowReSizeWidth = GetScreenWidth() / screenWidth;
+	windowReSizeHeight = GetScreenHeight() / screenHeight;
+
 	Font font = GetFontDefault();
-	DrawText("You control the player with the mouse", 10, 10, fontSize, BLACK);
-	DrawText("Right click to accelerate", 10, 60, fontSize, BLACK);
-	DrawText("Left click to shoot", 10, 110, fontSize, BLACK);
-	DrawText("Click any part of the screen to continue...", 10, 400, 30, BLACK);
+	DrawText("You control the player with the mouse", 10 * windowReSizeWidth, 10 * windowReSizeHeight, fontSize, BLACK);
+	DrawText("Right click to accelerate", 10 * windowReSizeWidth, 60 * windowReSizeHeight, fontSize, BLACK);
+	DrawText("Left click to shoot", 10 * windowReSizeWidth, 110 * windowReSizeHeight, fontSize, BLACK);
+	DrawText("Click any part of the screen to continue...", 10 * windowReSizeWidth, 400 * windowReSizeHeight, 30, BLACK);
 }
 
 void Rules::SetSceneManager(SceneManager* sm)

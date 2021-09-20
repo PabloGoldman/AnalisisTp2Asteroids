@@ -5,11 +5,16 @@
 
 enum class MenuScene { PLAY, OPTIONS, CREDITS, EXIT, MENUOPTION };
 
-const int totalButtons = 4;
+const int totalButtons = 5;
 
 class Menu
 {
 private:
+	const float screenWidth = 800;
+	const float screenHeight = 450;
+
+	float windowReSizeWidth = GetScreenWidth() / screenWidth;
+	float windowReSizeHeight = GetScreenHeight() / screenHeight;
 
 	MenuScene menuScene;
 	AudioManager* audioManager;

@@ -1,7 +1,5 @@
 #include "InGamePause.h"
 
-const int screenWidth = 800;
-const int screenHeight = 450;
 
 const int fontSize = 40;
 
@@ -67,16 +65,19 @@ void InGamePause::CheckInput()
 
 void InGamePause::DrawPauseMenu()
 {
+	float windowReSizeWidth = GetScreenWidth() / screenWidth;
+	float windowReSizeHeight = GetScreenHeight() / screenHeight;
+
 	Font font = GetFontDefault();
 
-	DrawRectangle(screenWidth / 2 - 250, screenHeight / 2 - 100, 500, 300, DARKBLUE);
+	DrawRectangle((screenWidth / 2 - 250) * windowReSizeWidth, (screenHeight / 2 - 100) * windowReSizeHeight, 500 * windowReSizeWidth, 300 * windowReSizeHeight, DARKBLUE);
 	resume->DrawButton(resume->GetRectangle(), "RESUME");
 	quit->DrawButton(quit->GetRectangle(), "QUIT");
 }
 
 void InGamePause::Update()
 {
-	
+
 }
 
 void InGamePause::SetButtonsData()

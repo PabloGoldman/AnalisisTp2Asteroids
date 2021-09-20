@@ -1,7 +1,4 @@
 #include "PowerUp.h"
-const int screenWidth = 800;
-const int screenHeight = 450;
-
 
 PowerUp::PowerUp()
 {
@@ -49,7 +46,9 @@ void PowerUp::SetPosition(Vector2 _position)
 
 void PowerUp::SetRadius(float _radius)
 {
-	radius = _radius;
+    windowReSizeHeight = GetScreenHeight() / screenHeight;
+
+	radius = _radius * windowReSizeHeight;
 }
 
 void PowerUp::SetActive(bool _active)
@@ -78,7 +77,7 @@ void PowerUp::Update()
 	{
 		if (!active)
 		{
-			position = {((float)GetRandomValue(0, screenWidth)),((float)GetRandomValue(0, screenHeight)) };
+			position = {((float)GetRandomValue(0, GetScreenWidth())),((float)GetRandomValue(0, GetScreenHeight())) };
 		}
 		active = true;
 	}

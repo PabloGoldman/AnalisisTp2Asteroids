@@ -100,6 +100,13 @@
       <AdditionalLibraryDirectories>$(SolutionDir)raylib-3.7.0_win32_msvc16\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>raylib.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>MKDIR "$(TargetDir)res/assets"
+XCOPY "$(SolutionDir)res/assets" "$(TargetDir)res/assets" /e /h /y /s
+XCOPY "$(SolutionDir)Raylibdll" "$(TargetDir)" /e /h /y /s
+MKDIR "$(ProjectDir)res\assets"
+XCOPY "$(SolutionDir)res\assets" "$(ProjectDir)res\assets" /e /h /y /s</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -119,6 +126,13 @@
       <AdditionalLibraryDirectories>$(SolutionDir)raylib-3.7.0_win32_msvc16\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>raylib.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>MKDIR "$(TargetDir)res/assets"
+XCOPY "$(SolutionDir)res/assets" "$(TargetDir)res/assets" /e /h /y /s
+XCOPY "$(SolutionDir)Raylibdll" "$(TargetDir)" /e /h /y /s
+MKDIR "$(ProjectDir)res\assets"
+XCOPY "$(SolutionDir)res\assets" "$(ProjectDir)res\assets" /e /h /y /s</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

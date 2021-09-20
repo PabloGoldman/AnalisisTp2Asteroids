@@ -5,8 +5,13 @@
 class Player
 {
 private:
+	const float screenWidth = 800;
+	const float screenHeight = 450;
 
-	Bullet* bullet[4];
+	float windowReSizeWidth = GetScreenWidth() / screenWidth;
+	float windowReSizeHeight = GetScreenHeight() / screenHeight;
+
+	Bullet* bullet[3];
 	Vector2 position;
 	Vector2 speed;
 	Vector2 acceleration;

@@ -1,13 +1,12 @@
 #include "Bullet.h"
 
-const int screenWidth = 800;
-const int screenHeight = 450;
 
 Bullet::Bullet()
 {
 	active = false;
 	color = BLACK;
 	lifeSpawn = 0;
+	lifeTime = 120;
 	position = { 0,0 };
 	radius = 2;
 	rotation = 0;
@@ -68,7 +67,9 @@ void Bullet::SetSpeed(Vector2 _speed)
 
 void Bullet::SetRadius(float _radius)
 {
-	radius = _radius;
+	windowReSizeWidth = GetScreenWidth() / screenWidth;
+
+	radius = _radius * windowReSizeHeight;
 }
 
 void Bullet::SetLifeSpawn(float _lifeSpawn)
@@ -91,10 +92,18 @@ void Bullet::SetRotation(float _rotation)
 	rotation = _rotation;
 }
 
+void Bullet::SetLifeTime(float _lifetime)
+{
+	lifeTime = _lifetime;
+}
+
 void Bullet::Update()
 {
 	LifeTime();
 	WallCollision();
+
+	windowReSizeWidth = GetScreenWidth() / screenWidth;
+	windowReSizeHeight = GetScreenHeight() / screenHeight;
 }
 
 void Bullet::Draw()
@@ -113,7 +122,7 @@ void Bullet::AddPosition(Vector2 pos)
 
 void Bullet::LifeTime()
 {
-	if (lifeSpawn >= 60)
+	if (lifeSpawn >= lifeTime)
 	{
 		ResetData();
 	}
@@ -121,22 +130,22 @@ void Bullet::LifeTime()
 
 void Bullet::WallCollision()
 {
-	if (position.x > screenWidth + radius)
+	if (position.x > (screenWidth * windowReSizeWidth + radius))
 	{
 		active = false;
 		lifeSpawn = 0;
 	}
-	else if (position.x < 0 - radius)
+	else if (position.x < (0 - radius))
 	{
 		active = false;
 		lifeSpawn = 0;
 	}
-	if (position.y > screenHeight + radius)
+	if (position.y > (screenHeight * windowReSizeHeight + radius))
 	{
 		active = false;
 		lifeSpawn = 0;
 	}
-	else if (position.y < 0 - radius)
+	else if (position.y < (0 - radius))
 	{
 		active = false;
 		lifeSpawn = 0;

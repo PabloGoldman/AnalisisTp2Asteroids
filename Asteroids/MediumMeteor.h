@@ -3,6 +3,15 @@
 class MediumMeteor
 {
 	private:
+		const float screenWidth = 800;
+		const float screenHeight = 450;
+
+		float currentScreenWidth = GetScreenWidth();
+		float currentScreenHeight = GetScreenHeight();
+
+		float windowReSizeWidth = currentScreenWidth / screenWidth;
+		float windowReSizeHeight = currentScreenHeight / screenHeight;
+
 		Vector2 speed;
 		Vector2 position;
 		float radius;

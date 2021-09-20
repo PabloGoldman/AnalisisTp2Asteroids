@@ -3,10 +3,8 @@
 #include <string>
 #include <cmath>
 
-const int screenWidth = 800;
-const int screenHeight = 450;
 const int fontSize = 40;
-const int totalBullets = 4;
+int totalBullets = 3;
 const int bigMeteors = 4;
 const int mediumMeteors = 8;
 const int smallMeteors = 16;
@@ -110,8 +108,11 @@ void Gameplay::ResetPowerUp()
 	if (time >= 10)
 	{
 		player->SetHeight((20.0f / 2) / tanf(20 * DEG2RAD));
-		player->SetSpeed({ {sin(player->GetRotation() * DEG2RAD) * 100.0f},
-		{cos(player->GetRotation() * DEG2RAD) * 100.0f} });
+		for (int i = 0; i < totalBullets; i++)
+		{
+			bullet[i]->SetLifeTime(60);
+		}
+		totalBullets = 3;
 		time = 0;
 	}
 }
@@ -175,7 +176,6 @@ void Gameplay::GameUpdate()
 	powerUp->Update();
 }
 
-
 void Gameplay::PowerUpCollision()
 {
 	if (CheckCollisionCircles({ player->GetCollider().x,player->GetCollider().y },
@@ -188,8 +188,10 @@ void Gameplay::PowerUpCollision()
 		}
 		else
 		{
-			player->SetSpeed({ {sin(player->GetRotation() * DEG2RAD) * 150.0f},
-		    {cos(player->GetRotation() * DEG2RAD) * 150.0f} });
+			for (int i = 0; i < totalBullets; i++)
+			{
+				bullet[i]->SetLifeTime(60);
+			}
 		}
 		powerUp->SetActive(false);
 		powerUp->SetTime(0);
@@ -326,19 +328,13 @@ void Gameplay::MeteorsLogic()
 	}
 }
 
-void Gameplay::RotatePlayer()
-{
-	player->SetRotation(Vector2Angle(player->GetPos(), GetMousePosition()) + 90);
-}
-
 void Gameplay::Move()
 {
-	player->SetRotation(Vector2Angle(player->GetPos(), GetMousePosition()) + 90);
+	RotatePlayer();
 
 	if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON)) 
 	{
-		player->AddAcceleration(-(Direction().x / (sqrt((Direction().x * Direction().x) + Direction().y * Direction().y))),
-			-(Direction().y / (sqrt((Direction().x * Direction().x) + Direction().y * Direction().y))));
+		Accelerate();
 	}
 
 	player->AddPosition({ player->GetAcceleration().x * GetFrameTime(),
@@ -375,8 +371,13 @@ void Gameplay::PlayerMeteorsCollision()
 			gameOver = true;
 		}
 	}
+	time = 0;
 }
 
+void Gameplay::RotatePlayer()
+{
+	player->SetRotation(Vector2Angle(player->GetPos(), GetMousePosition()) + 90);
+}
 
 void Gameplay::SetMovSpeed()
 {
@@ -385,7 +386,8 @@ void Gameplay::SetMovSpeed()
 
 void Gameplay::Accelerate()
 {
-	
+	player->AddAcceleration(-(Direction().x / (sqrt((Direction().x * Direction().x) + Direction().y * Direction().y))),
+		-(Direction().y / (sqrt((Direction().x * Direction().x) + Direction().y * Direction().y))));
 }
 
 void Gameplay::DrawPlayerPoints(Player* player, int x, int y)
@@ -406,7 +408,11 @@ void Gameplay::SetMeteorsData()
 {
 	for (int i = 0; i < bigMeteors; i++)
 	{
-		bigMeteor[i]->SetPosition({ (float)GetRandomValue(0, screenWidth),(float)GetRandomValue(0, screenHeight) });
+		do
+		{
+			bigMeteor[i]->SetPosition({ (float)GetRandomValue(0, GetScreenWidth()),(float)GetRandomValue(0, GetScreenHeight()) });
+		} while (bigMeteor[i]->GetPosition().x - player->GetPos().x  < 3 && bigMeteor[i]->GetPosition().x - player->GetPos().x > -3);
+
 		bigMeteor[i]->SetSpeed({ (float)GetRandomValue(-2, 2) ,(float)GetRandomValue(-2, 2) });
 		bigMeteor[i]->SetActive(true);
 		bigMeteor[i]->SetRadius(40);

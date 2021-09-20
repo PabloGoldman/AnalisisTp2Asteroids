@@ -5,6 +5,11 @@
 class Text
 {
 private:
+	const float screenWidth = 800;
+	const float screenHeight = 450;
+
+	float windowReSizeWidth = GetScreenWidth() / screenWidth;
+	float windowReSizeHeight = GetScreenHeight() / screenHeight;
 
 	std::string tx = "";
 	Vector2 pos = { 0,0 };

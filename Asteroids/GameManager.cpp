@@ -36,7 +36,7 @@ GameManager::~GameManager()
 
 void GameManager::RunGame()
 {
-	InitWindow(screenWidth, screenHeight, "Pong");
+	InitWindow(800, 450, "Asteroids");
 
 	while (!WindowShouldClose() && isPlaying)    // Detect window close button or ESC key
 	{

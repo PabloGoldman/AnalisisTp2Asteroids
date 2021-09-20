@@ -11,6 +11,12 @@ private:
 	Rectangle rectangle;
 	bool isActive = false;
 
+	const float screenWidth = 800;
+	const float screenHeight = 450;
+
+	float windowReSizeWidth = GetScreenWidth() / screenWidth;
+	float windowReSizeHeight = GetScreenHeight() / screenHeight;
+
 public:
 	Button();
 	~Button();

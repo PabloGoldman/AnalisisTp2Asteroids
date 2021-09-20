@@ -1,7 +1,5 @@
 #include "Menu.h"
 
-const int screenWidth = 800;
-const int screenHeight = 450;
 
 const int fontSize = 40;
 
@@ -14,6 +12,7 @@ int PlayButtonPosition = 50;
 int OptionsButtonPosition = 150;
 int CreditsButtonPosition = 250;
 int ExitButtonPosition = 350;
+int AspectRatioButtonPosition = 150;
 
 int optionButtonHeight = 20;
 int optionButtonWidth = 20;
@@ -67,6 +66,7 @@ void Menu::Draw()
 	DrawButton(_button[1], "CONTROLS");
 	DrawButton(_button[2], "CREDITS");
 	DrawButton(_button[3], "EXIT");
+	DrawButton(_button[4], "RES");
 
 	DrawLogo();
 }
@@ -79,6 +79,7 @@ void Menu::InitMenuData()
 	SetButtonsData(_button[1], screenWidth * 0.5 - 100, OptionsButtonPosition, 70, 300);
 	SetButtonsData(_button[2], screenWidth * 0.5 - 100, CreditsButtonPosition, 70, 300);
 	SetButtonsData(_button[3], screenWidth * 0.5 - 100, ExitButtonPosition, 70, 300);
+	SetButtonsData(_button[4], 30, AspectRatioButtonPosition, 70, 300);
 }
 
 void Menu::DrawLogo()
@@ -130,6 +131,24 @@ void Menu::CheckInput()
 		else if (CheckCollisionPointRec(GetMousePosition(), _button[3]->GetRectangle()))
 		{
 			sceneManager->SetSceneManager(Scene::EXIT);
+		}
+		else if (CheckCollisionPointRec(GetMousePosition(), _button[4]->GetRectangle()))
+		{
+			if (GetScreenWidth() == 800)
+			{
+				SetWindowSize(1200, 675);
+				InitMenuData();
+			}
+			else if (GetScreenWidth() == 1200)
+			{
+				SetWindowSize(1920, 1080);
+				InitMenuData();
+			}
+			else if (GetScreenWidth() == 1920)
+			{
+				SetWindowSize(800, 450);
+				InitMenuData();
+			}
 		}
 	}
 	audioManager->PlayOptionSound();

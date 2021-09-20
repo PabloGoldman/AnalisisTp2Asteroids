@@ -7,6 +7,13 @@ enum class ENDGAMEOPTION { PLAY, QUIT };
 class EndGameScreen
 {
 private:
+
+	const float screenWidth = 800;
+	const float screenHeight = 450;
+
+	float windowReSizeWidth = GetScreenWidth() / screenWidth;
+	float windowReSizeHeight = GetScreenHeight() / screenHeight;
+
 	ENDGAMEOPTION option;
 
 	SceneManager* sceneManager;

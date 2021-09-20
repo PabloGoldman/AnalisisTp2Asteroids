@@ -54,14 +54,17 @@ void EndGameScreen::CheckInput()
 
 void EndGameScreen::DrawEndGameScreen()
 {
+	windowReSizeWidth = GetScreenWidth() / screenWidth;
+	windowReSizeHeight = GetScreenHeight() / screenHeight;
+
 	Font font = GetFontDefault();
 
-	DrawRectangle(screenWidth / 2 - 220, 20, 500, 400, DARKBLUE); //Fondo
+	DrawRectangle((screenWidth / 2 - 220) * windowReSizeWidth, (screenHeight/2 - 200) * windowReSizeHeight, 500 * windowReSizeWidth, 400 * windowReSizeHeight, DARKBLUE); //Fondo
 
 	if (player1Win)
-		DrawText("YOU WIN", screenWidth / 2 - 100, 50, 50, BLACK);
+		DrawText("YOU WIN", (screenWidth / 2 - 100) * windowReSizeWidth, 50 * windowReSizeWidth, 50 * windowReSizeHeight, BLACK);
 	else
-		DrawText("GAME OVER", screenWidth / 2 - 100, 50, 50, BLACK);
+		DrawText("GAME OVER", (screenWidth / 2 - 100) * windowReSizeWidth, 50 * windowReSizeWidth, 50 * windowReSizeHeight, BLACK);
 
 	replay->DrawButton(replay->GetRectangle(), "PLAY AGAIN");
 	quit->DrawButton(quit->GetRectangle(), "QUIT");
