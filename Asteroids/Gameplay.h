@@ -51,6 +51,8 @@ private:
 	void ResetPowerUp();
 
 	float Vector2Angle(Vector2 v1, Vector2 v2);
+	Vector2 Direction();
+	float Lenght(Vector2 v);
 
 public:
 	Gameplay();

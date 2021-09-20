@@ -1,6 +1,7 @@
 #include "Gameplay.h"
 #include <iostream>
 #include <string>
+#include <cmath>
 
 const int screenWidth = 800;
 const int screenHeight = 450;
@@ -163,9 +164,6 @@ void Gameplay::GameUpdate()
 {
 	player->Update();
 
-	RotatePlayer();
-	SetMovSpeed();
-	Accelerate();
 	Move();
 	PlayerMeteorsCollision();
 	BulletMeteorsCollision();
@@ -191,7 +189,7 @@ void Gameplay::PowerUpCollision()
 		else
 		{
 			player->SetSpeed({ {sin(player->GetRotation() * DEG2RAD) * 150.0f},
-		{cos(player->GetRotation() * DEG2RAD) * 150.0f} });
+		    {cos(player->GetRotation() * DEG2RAD) * 150.0f} });
 		}
 		powerUp->SetActive(false);
 		powerUp->SetTime(0);
@@ -301,7 +299,7 @@ void Gameplay::ResetData()
 {
 	player->SetPoints(0);
 	player->SetHeight((20.0f / 2) / tanf(20 * DEG2RAD));
-	player->SetAcceleration(0);
+	player->SetAcceleration({ 0,0 });
 	player->SetCollider({ player->GetPos().x + (float)sin(player->GetRotation() * DEG2RAD)
 		* (player->GetHeight() / 2.5f), player->GetPos().y - (float)cos(player->GetRotation() * DEG2RAD) * (player->GetHeight() / 2.5f), 12 });
 	player->SetRotation(0);
@@ -335,8 +333,17 @@ void Gameplay::RotatePlayer()
 
 void Gameplay::Move()
 {
-	player->AddPosition({ player->GetSpeed().x * player->GetAcceleration() * GetFrameTime(),
-		player->GetSpeed().y * -player->GetAcceleration() * GetFrameTime() });
+	player->SetRotation(Vector2Angle(player->GetPos(), GetMousePosition()) + 90);
+
+	if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON)) 
+	{
+		player->AddAcceleration(-(Direction().x / (sqrt((Direction().x * Direction().x) + Direction().y * Direction().y))),
+			-(Direction().y / (sqrt((Direction().x * Direction().x) + Direction().y * Direction().y))));
+	}
+
+	player->AddPosition({ player->GetAcceleration().x * GetFrameTime(),
+		player->GetAcceleration().y * GetFrameTime()});
+
 	player->WallCollision();
 }
 
@@ -370,35 +377,15 @@ void Gameplay::PlayerMeteorsCollision()
 	}
 }
 
-float Gameplay::Vector2Angle(Vector2 v1, Vector2 v2)
-{
-	float result = atan2f(v2.y - v1.y, v2.x - v1.x) * RAD2DEG;
-	if (result < 0)
-		result += 360;
-
-	return result;
-}
 
 void Gameplay::SetMovSpeed()
 {
-	player->SetSpeed({ {sin(player->GetRotation() * DEG2RAD) * 100.0f},
-		{cos(player->GetRotation() * DEG2RAD) * 100.0f} });
+	
 }
 
 void Gameplay::Accelerate()
 {
-	if (IsMouseButtonDown(1))
-	{
-		if (player->GetAcceleration() < 10)
-			player->AddAcceleration(0.0008f);
-	}
-	else
-	{
-		if (player->GetAcceleration() > 0)
-			player->AddAcceleration(-0.02f);
-		else if (player->GetAcceleration() < 0)
-			player->SetAcceleration(0);
-	}
+	
 }
 
 void Gameplay::DrawPlayerPoints(Player* player, int x, int y)
@@ -460,6 +447,27 @@ void Gameplay::SetAudioManager(AudioManager* am)
 {
 	audioManager = am;
 }
+
+float Gameplay::Vector2Angle(Vector2 v1, Vector2 v2)
+{
+	float result = atan2f(v2.y - v1.y, v2.x - v1.x) * RAD2DEG;
+	if (result < 0)
+		result += 360;
+
+	return result;
+}
+
+Vector2 Gameplay::Direction()
+{
+	return { GetMousePosition().x - player->GetPos().x ,GetMousePosition().y - player->GetPos().y };
+}
+
+float Gameplay::Lenght(Vector2 v)
+{
+	return sqrtf((v.x * v.x) + (v.y * v.y));
+}
+
+
 
 
 

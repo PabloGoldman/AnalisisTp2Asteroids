@@ -10,7 +10,7 @@ Player::Player()
 	color = MAROON;
 	speed = { 0,0 };
 	points = 0;
-	acceleration = 0;
+	acceleration = { 0,0 };
 	height = 0;
 	collider = { 0,0,0 };
 	position = { 0,0 };
@@ -47,7 +47,7 @@ int Player::GetPoints()
 	return points;
 }
 
-float Player::GetAcceleration()
+Vector2 Player::GetAcceleration()
 {
 	return acceleration;
 }
@@ -79,12 +79,13 @@ void Player::AddRotation(float _rotation)
 	rotation += _rotation;
 }
 
-void Player::AddAcceleration(float _acceleration)
+void Player::AddAcceleration(float _accelerationX, float _accelerationY)
 {
-	acceleration += _acceleration;
+	acceleration.x -= _accelerationX * GetFrameTime() * 200;
+	acceleration.y -= _accelerationY * GetFrameTime() * 200;
 }
 
-void Player::SetAcceleration(float _acceleration)
+void Player::SetAcceleration(Vector2 _acceleration)
 {
 	acceleration = _acceleration;
 }

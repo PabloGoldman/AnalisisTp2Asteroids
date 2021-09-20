@@ -9,7 +9,7 @@ private:
 	Bullet* bullet[4];
 	Vector2 position;
 	Vector2 speed;
-	float acceleration;
+	Vector2 acceleration;
 	float rotation;
 	Vector3 collider;
 
@@ -30,15 +30,15 @@ public:
 	Vector2 GetPos();
 	Vector3 GetCollider();
 	int GetPoints();
-	float GetAcceleration();
+	Vector2 GetAcceleration();
 	float GetRotation();
 	float GetHeight();
 
 	void SetBullets(Bullet* _bullet);
 	void AddPosition(Vector2 _pos);
 	void AddRotation(float _rotation);
-	void AddAcceleration(float _acceleration);
-	void SetAcceleration(float _acceleration);
+	void AddAcceleration(float _accelerationX, float _accelerationY);
+	void SetAcceleration(Vector2 _acceleration);
 	void SetRotation(float _rotation);
 	void SetSpeed(Vector2 _speed);
 	void SetColor(Color _color);
