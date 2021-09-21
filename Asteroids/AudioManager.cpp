@@ -17,9 +17,9 @@ AudioManager::~AudioManager()
 
 void AudioManager::InitMusic()
 {
-	menuMusic = LoadMusicStream("../res/assets/Music/MenuMusic.mp3");
-	gameMusic = LoadMusicStream("../res/assets/Music/GameMusic.mp3");
-	optionSound = LoadSound("../res/assets/Music/OptionSound.mp3");
+	menuMusic = LoadMusicStream("res/assets/Music/MenuMusic.mp3");
+	gameMusic = LoadMusicStream("res/assets/Music/GameMusic.mp3");
+	optionSound = LoadSound("res/assets/Music/OptionSound.mp3");
 
 }
 
