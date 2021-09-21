@@ -82,3 +82,8 @@ void PowerUp::Update()
 		active = true;
 	}
 }
+
+float PowerUp::GetTime()
+{
+	return time;
+}

@@ -18,6 +18,8 @@ void Rules::DrawRules()
 	DrawText("You control the player with the mouse", 10 * windowReSizeWidth, 10 * windowReSizeHeight, fontSize, BLACK);
 	DrawText("Right click to accelerate", 10 * windowReSizeWidth, 60 * windowReSizeHeight, fontSize, BLACK);
 	DrawText("Left click to shoot", 10 * windowReSizeWidth, 110 * windowReSizeHeight, fontSize, BLACK);
+	DrawText("|P| to pause", 10 * windowReSizeWidth, 160 * windowReSizeHeight, fontSize, BLACK);
+	DrawText("There are 2 power ups!", 10 * windowReSizeWidth, 210 * windowReSizeHeight, fontSize, BLACK);
 	DrawText("Click any part of the screen to continue...", 10 * windowReSizeWidth, 400 * windowReSizeHeight, 30, BLACK);
 }
 

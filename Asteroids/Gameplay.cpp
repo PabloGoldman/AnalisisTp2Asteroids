@@ -75,6 +75,21 @@ Gameplay::~Gameplay()
 	}
 }
 
+void Gameplay::GameUpdate()
+{
+	player->Update();
+
+	Move();
+	PlayerMeteorsCollision();
+	BulletMeteorsCollision();
+	MeteorsLogic();
+	CheckGameState();
+	PowerUpCollision();
+	ResetPowerUp();
+
+	powerUp->Update();
+}
+
 void Gameplay::InGame()
 {
 	Input();
@@ -101,19 +116,15 @@ bool Gameplay::GetInPause()
 
 void Gameplay::ResetPowerUp()
 {
-	if (hasPowerUp)
-	{
-		time += GetFrameTime();
-	}
-	if (time >= 10)
+	if (powerUp->GetTime() >= 5 && hasPowerUp)
 	{
 		player->SetHeight((20.0f / 2) / tanf(20 * DEG2RAD));
 		for (int i = 0; i < totalBullets; i++)
 		{
 			bullet[i]->SetLifeTime(60);
 		}
-		totalBullets = 3;
-		time = 0;
+		powerUp->SetTime(0);
+		hasPowerUp = false;
 	}
 }
 
@@ -159,21 +170,6 @@ void Gameplay::Draw()
 void Gameplay::SetSceneManager(SceneManager* sc)
 {
 	scene = sc;
-}
-
-void Gameplay::GameUpdate()
-{
-	player->Update();
-
-	Move();
-	PlayerMeteorsCollision();
-	BulletMeteorsCollision();
-	MeteorsLogic();
-	CheckGameState();
-	PowerUpCollision();
-	ResetPowerUp();
-
-	powerUp->Update();
 }
 
 void Gameplay::PowerUpCollision()
@@ -307,6 +303,13 @@ void Gameplay::ResetData()
 	player->SetRotation(0);
 	player->SetPlayerPos({ screenWidth / 2, screenHeight / 2 - player->GetHeight() / 2 });
 	SetMeteorsData();
+	powerUp->SetActive(false);
+
+	for (int i = 0; i < totalBullets; i++)
+	{
+		bullet[i]->SetIsActive(false);
+	}
+
 	destroyedMeteors = 0;
 	mediumMeteorsCounteds = 0;
 	smallMeteorsCounteds = 0;

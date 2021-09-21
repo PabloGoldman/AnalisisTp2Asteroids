@@ -23,6 +23,7 @@ class PowerUp
 		float GetRadius();
 		Color GetColor();
 		bool GetActive();
+		float GetTime();
 
 		void SetTime(float _time);
 		void SetPosition(Vector2 _position);
