@@ -1,6 +1,6 @@
 #pragma once
-#include "SceneManager.h"
-#include "Button.h"	
+#include "Managers/SceneManager.h"
+#include "UI/Button.h"	
 
 
 enum class OPTION { RESUME, QUIT };

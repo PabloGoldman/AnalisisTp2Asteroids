@@ -1,12 +1,12 @@
 #pragma once
-#include "Menu.h"
-#include "SceneManager.h"
-#include "Gameplay.h"
-#include "Credits.h"
-#include "Rules.h"
-#include "InGamePause.h"
-#include "EndGameScreen.h"
-#include "AudioManager.h"
+#include "Menu/Menu.h"
+#include "Managers/SceneManager.h"
+#include "Gameplay/Gameplay.h"
+#include "Menu/Credits.h"
+#include "Menu/Rules.h"
+#include "Gameplay/InGamePause.h"
+#include "Menu/EndGameScreen.h"
+#include "Managers/AudioManager.h"
 
 class GameManager
 {

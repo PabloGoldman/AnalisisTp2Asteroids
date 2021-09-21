@@ -1,14 +1,14 @@
 #pragma once
-#include "Player.h"
-#include "Bullet.h"
-#include "HUD.h"
-#include "InGamePause.h"
-#include "AudioManager.h"
-#include "EndGameScreen.h"
-#include "BigMeteor.h"
-#include "MediumMeteor.h"
-#include "SmallMeteor.h"
-#include "PowerUp.h"
+#include "Gameplay/Player.h"
+#include "Gameplay/Bullet.h"
+#include "Gameplay/HUD.h"
+#include "Gameplay/InGamePause.h"
+#include "Managers/AudioManager.h"
+#include "Menu/EndGameScreen.h"
+#include "Gameplay/BigMeteor.h"
+#include "Gameplay/MediumMeteor.h"
+#include "Gameplay/SmallMeteor.h"
+#include "Gameplay/PowerUp.h"
 
 class Gameplay
 {

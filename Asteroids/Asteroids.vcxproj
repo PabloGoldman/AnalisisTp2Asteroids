@@ -116,7 +116,7 @@ XCOPY "$(SolutionDir)res\assets" "$(ProjectDir)res\assets" /e /h /y /s</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)raylib-3.7.0_win32_msvc16\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)raylib-3.7.0_win32_msvc16\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WholeProgramOptimization>false</WholeProgramOptimization>
     </ClCompile>
     <Link>
@@ -165,45 +165,45 @@ XCOPY "$(SolutionDir)res\assets" "$(ProjectDir)res\assets" /e /h /y /s</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AudioManager.cpp" />
-    <ClCompile Include="BigMeteor.cpp" />
-    <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="Credits.cpp" />
-    <ClCompile Include="EndGameScreen.cpp" />
-    <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="Gameplay.cpp" />
-    <ClCompile Include="HUD.cpp" />
-    <ClCompile Include="inGamePause.cpp" />
+    <ClCompile Include="Gameplay\BigMeteor.cpp" />
+    <ClCompile Include="Gameplay\Bullet.cpp" />
+    <ClCompile Include="Gameplay\Gameplay.cpp" />
+    <ClCompile Include="Gameplay\HUD.cpp" />
+    <ClCompile Include="Gameplay\inGamePause.cpp" />
+    <ClCompile Include="Gameplay\MediumMeteor.cpp" />
+    <ClCompile Include="Gameplay\Player.cpp" />
+    <ClCompile Include="Gameplay\PowerUp.cpp" />
+    <ClCompile Include="Gameplay\SmallMeteor.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MediumMeteor.cpp" />
-    <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PowerUp.cpp" />
-    <ClCompile Include="Rules.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="SmallMeteor.cpp" />
-    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="Managers\AudioManager.cpp" />
+    <ClCompile Include="Managers\GameManager.cpp" />
+    <ClCompile Include="Managers\SceneManager.cpp" />
+    <ClCompile Include="Menu\Credits.cpp" />
+    <ClCompile Include="Menu\EndGameScreen.cpp" />
+    <ClCompile Include="Menu\Menu.cpp" />
+    <ClCompile Include="Menu\Rules.cpp" />
+    <ClCompile Include="UI\Button.cpp" />
+    <ClCompile Include="UI\Text.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AudioManager.h" />
-    <ClInclude Include="BigMeteor.h" />
-    <ClInclude Include="Bullet.h" />
-    <ClInclude Include="Button.h" />
-    <ClInclude Include="Credits.h" />
-    <ClInclude Include="EndGameScreen.h" />
-    <ClInclude Include="GameManager.h" />
-    <ClInclude Include="Gameplay.h" />
-    <ClInclude Include="HUD.h" />
-    <ClInclude Include="inGamePause.h" />
-    <ClInclude Include="MediumMeteor.h" />
-    <ClInclude Include="Menu.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PowerUp.h" />
-    <ClInclude Include="Rules.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="SmallMeteor.h" />
-    <ClInclude Include="Text.h" />
+    <ClInclude Include="Gameplay\BigMeteor.h" />
+    <ClInclude Include="Gameplay\Bullet.h" />
+    <ClInclude Include="Gameplay\Gameplay.h" />
+    <ClInclude Include="Gameplay\HUD.h" />
+    <ClInclude Include="Gameplay\inGamePause.h" />
+    <ClInclude Include="Gameplay\MediumMeteor.h" />
+    <ClInclude Include="Gameplay\Player.h" />
+    <ClInclude Include="Gameplay\PowerUp.h" />
+    <ClInclude Include="Gameplay\SmallMeteor.h" />
+    <ClInclude Include="Managers\AudioManager.h" />
+    <ClInclude Include="Managers\GameManager.h" />
+    <ClInclude Include="Managers\SceneManager.h" />
+    <ClInclude Include="Menu\Credits.h" />
+    <ClInclude Include="Menu\EndGameScreen.h" />
+    <ClInclude Include="Menu\Menu.h" />
+    <ClInclude Include="Menu\Rules.h" />
+    <ClInclude Include="UI\Button.h" />
+    <ClInclude Include="UI\Text.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

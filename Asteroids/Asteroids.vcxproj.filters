@@ -84,115 +84,115 @@
     <ClCompile Include="main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Managers\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="AudioManager.cpp">
+    <ClCompile Include="Managers\AudioManager.cpp">
       <Filter>Managers\AudioManager</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
+    <ClCompile Include="Managers\GameManager.cpp">
+      <Filter>Managers\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Managers\SceneManager.cpp">
       <Filter>Managers\SceneManager</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Screens\MainMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="Text.cpp">
-      <Filter>UI\Text</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>UI\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="Credits.cpp">
+    <ClCompile Include="Menu\Credits.cpp">
       <Filter>Screens\Credits</Filter>
     </ClCompile>
-    <ClCompile Include="EndGameScreen.cpp">
+    <ClCompile Include="Menu\EndGameScreen.cpp">
       <Filter>Screens\EndGameScreen</Filter>
     </ClCompile>
-    <ClCompile Include="Gameplay.cpp">
-      <Filter>Screens\Gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="Rules.cpp">
-      <Filter>Screens\Rules</Filter>
-    </ClCompile>
-    <ClCompile Include="inGamePause.cpp">
-      <Filter>Screens\Gameplay\InGamePause</Filter>
-    </ClCompile>
-    <ClCompile Include="HUD.cpp">
-      <Filter>Screens\Gameplay\HUD</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Screens\Gameplay\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="BigMeteor.cpp">
-      <Filter>Screens\Gameplay\Meteors\BigMeteor</Filter>
-    </ClCompile>
-    <ClCompile Include="MediumMeteor.cpp">
-      <Filter>Screens\Gameplay\Meteors\MediumMeteor</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
+    <ClCompile Include="Gameplay\Bullet.cpp">
       <Filter>Screens\Gameplay\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="SmallMeteor.cpp">
+    <ClCompile Include="Gameplay\HUD.cpp">
+      <Filter>Screens\Gameplay\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\inGamePause.cpp">
+      <Filter>Screens\Gameplay\InGamePause</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\BigMeteor.cpp">
+      <Filter>Screens\Gameplay\Meteors\BigMeteor</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\MediumMeteor.cpp">
+      <Filter>Screens\Gameplay\Meteors\MediumMeteor</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\SmallMeteor.cpp">
       <Filter>Screens\Gameplay\Meteors\SmallMeteor</Filter>
     </ClCompile>
-    <ClCompile Include="PowerUp.cpp">
+    <ClCompile Include="Gameplay\Player.cpp">
+      <Filter>Screens\Gameplay\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\PowerUp.cpp">
       <Filter>Screens\Gameplay\PowerUp</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay\Gameplay.cpp">
+      <Filter>Screens\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu\Menu.cpp">
+      <Filter>Screens\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu\Rules.cpp">
+      <Filter>Screens\Rules</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Button.cpp">
+      <Filter>UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Text.cpp">
+      <Filter>UI\Text</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameManager.h">
-      <Filter>Managers\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="AudioManager.h">
+    <ClInclude Include="Managers\AudioManager.h">
       <Filter>Managers\AudioManager</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
+    <ClInclude Include="Managers\GameManager.h">
+      <Filter>Managers\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Managers\SceneManager.h">
       <Filter>Managers\SceneManager</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Screens\MainMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="Text.h">
-      <Filter>UI\Text</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>UI\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="Credits.h">
+    <ClInclude Include="Menu\Credits.h">
       <Filter>Screens\Credits</Filter>
     </ClInclude>
-    <ClInclude Include="EndGameScreen.h">
+    <ClInclude Include="Menu\EndGameScreen.h">
       <Filter>Screens\EndGameScreen</Filter>
     </ClInclude>
-    <ClInclude Include="Gameplay.h">
-      <Filter>Screens\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Rules.h">
-      <Filter>Screens\Rules</Filter>
-    </ClInclude>
-    <ClInclude Include="inGamePause.h">
-      <Filter>Screens\Gameplay\InGamePause</Filter>
-    </ClInclude>
-    <ClInclude Include="HUD.h">
-      <Filter>Screens\Gameplay\HUD</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Screens\Gameplay\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="BigMeteor.h">
-      <Filter>Screens\Gameplay\Meteors\BigMeteor</Filter>
-    </ClInclude>
-    <ClInclude Include="MediumMeteor.h">
-      <Filter>Screens\Gameplay\Meteors\MediumMeteor</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
+    <ClInclude Include="Gameplay\Bullet.h">
       <Filter>Screens\Gameplay\Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="SmallMeteor.h">
+    <ClInclude Include="Gameplay\HUD.h">
+      <Filter>Screens\Gameplay\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\inGamePause.h">
+      <Filter>Screens\Gameplay\InGamePause</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\BigMeteor.h">
+      <Filter>Screens\Gameplay\Meteors\BigMeteor</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\MediumMeteor.h">
+      <Filter>Screens\Gameplay\Meteors\MediumMeteor</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\SmallMeteor.h">
       <Filter>Screens\Gameplay\Meteors\SmallMeteor</Filter>
     </ClInclude>
-    <ClInclude Include="PowerUp.h">
+    <ClInclude Include="Gameplay\Player.h">
+      <Filter>Screens\Gameplay\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\PowerUp.h">
       <Filter>Screens\Gameplay\PowerUp</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\Gameplay.h">
+      <Filter>Screens\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu\Menu.h">
+      <Filter>Screens\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu\Rules.h">
+      <Filter>Screens\Rules</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Button.h">
+      <Filter>UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Text.h">
+      <Filter>UI\Text</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

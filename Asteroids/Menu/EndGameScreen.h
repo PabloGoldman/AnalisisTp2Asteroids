@@ -1,6 +1,6 @@
 #pragma once
-#include "Button.h"
-#include "SceneManager.h"
+#include "UI/Button.h"
+#include "Managers/SceneManager.h"
 
 enum class ENDGAMEOPTION { PLAY, QUIT };
 
