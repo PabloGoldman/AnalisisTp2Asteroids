@@ -96,9 +96,11 @@ void Gameplay::InGame()
 	if (!pause->GetInPause())
 	{
 		Update();
+		Draw();
 	}
 	else
 	{
+		Draw();
 		pause->InPause();
 		if (scene->GetScene() == Scene::MENU)
 		{
@@ -106,7 +108,7 @@ void Gameplay::InGame()
 		}
 	}
 	audioManager->PlayGameMusic();
-	Draw();
+	
 }
 
 bool Gameplay::GetInPause()
@@ -414,7 +416,7 @@ void Gameplay::SetMeteorsData()
 		do
 		{
 			bigMeteor[i]->SetPosition({ (float)GetRandomValue(0, GetScreenWidth()),(float)GetRandomValue(0, GetScreenHeight()) });
-		} while (bigMeteor[i]->GetPosition().x - player->GetPos().x  < 3 && bigMeteor[i]->GetPosition().x - player->GetPos().x > -3);
+		} while (bigMeteor[i]->GetPosition().x - player->GetPos().x  < 10 && bigMeteor[i]->GetPosition().x - player->GetPos().x > -10);
 
 		bigMeteor[i]->SetSpeed({ (float)GetRandomValue(-2, 2) ,(float)GetRandomValue(-2, 2) });
 		bigMeteor[i]->SetActive(true);
