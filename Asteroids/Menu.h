@@ -20,7 +20,6 @@ private:
 	AudioManager* audioManager;
 	SceneManager* sceneManager;
 	Button* _button[totalButtons];
-	Texture2D logo;
 
 	void Input();
 	void Update();
